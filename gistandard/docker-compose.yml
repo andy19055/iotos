@@ -25,6 +25,7 @@ services:
           - /sandbox/media:/sandbox/gistandard/media
           - /sandbox/nginx/nginx.conf:/etc/nginx/nginx.conf
           - /data/iotos/gistandard:/sandbox/gistandard
+          - /data/iotos/gistandard/config/sources.list:/etc/apt/sources.list
       command: bash -c "uwsgi config/sandbox.ini && nginx -g 'daemon off;' && service ssh start"
       ports: 
           - "80:80"
