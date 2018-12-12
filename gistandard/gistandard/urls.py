@@ -25,6 +25,9 @@ from adm.views import AdmView
 from personal import views as personal_views
 from personal import views_work_order as order
 
+#利用TemplateView
+from django.views.generic import TemplateView
+
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
@@ -32,6 +35,8 @@ urlpatterns = [
     # 用户登录
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
+    #add for vue.js
+    url(r'^vue/$', TemplateView.as_view(template_name="index.html")),
 
     url(r'^system/$', SystemView.as_view(), name="system"),
     url(r'^system/basic/', include('users.urls', namespace='system-basic')),

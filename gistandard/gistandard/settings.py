@@ -63,14 +63,14 @@ MIDDLEWARE = [
     'apps.users.middleware.MenuMiddleware',
     'apps.rbac.middleware.RbacMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'gistandard.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': ['vuefront/dist',os.path.join(BASE_DIR, 'templates')],  #add for vue.js
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,9 +140,14 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/staticaa/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    # Add for vuejs
+    # os.path.join(BASE_DIR, "vuefront/dist/static"),
+
+    # os.path.join(BASE_DIR, 'static'),
+]
 
 MEDIA_URL = '/media/'
 
