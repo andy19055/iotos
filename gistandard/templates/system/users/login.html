@@ -1,48 +1,76 @@
 {% extends "system/users/user-base.html" %}
 
 {% block user-content %}
-<!-- /.login-logo -->
-<div class="login-box-body form" style="opacity: 0.5;border-radius: 10px;background:silver">
-    <p class="login-box-msg"></p>
-    <p></p>
-    <form action="" method="post">
-      <div class="form-group has-feedback {% if login_form.errors.username %}has-error{% endif %}">
-        <input name="username" class="form-control" placeholder="用户名或手机号" value="{{ login_form.username.value }}">  <!--type="email"前端控制email输入验证-->
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback {% if login_form.errors.password %}has-error{% endif %}">
-        <input name="password" type="password" class="form-control" placeholder="密码"
-               value="{{ login_form.password.value }}">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
+
+<!--{% if system_setup.loginTitle %}{{ system_setup.loginTitle }}{% else %}爱投斯协同办公平台{% endif %}-->
+<div class="login-topBg">
+    <div class="login-topBg1">
+
+        <div class="login-topStyle">
+
+            <!--在点击注册时出现样式login-topStyle3登录框，而login-topStyle2则消失-->
+            <div class="login-topStyle3" id="loginStyle" style="margin-top: 75px;">
+                <h3>用户平台登录</h3>
+                <!--输入错误提示信息，默认是隐藏的，把display:none，变成block可看到-->
+                <div class="error-information" style="display:none;">您输入的密码不正确，请重新输入</div>
+                <div class="ui-form-item loginUsername">
+                    <input type="username" placeholder="用户名/手机号/密码">
+                </div>
+                <div class="ui-form-item loginPassword">
+                    <input type="password" placeholder="请输入密码">
+                </div>
+                <div class="login_reme">
+                    <input type="checkbox">
+                    <a class="reme1">记住账号</a> <a class="reme2" href="password.html">忘记密码?</a></div>
+                <span class="error_xinxi" style="display:none;">您输入的密码不正确，请重新输入</span> <a class="btnStyle btn-register"
+                                                                                          href="register.html"> 立即登录</a>
+            </div>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
-        </div>
-        <!-- /.col -->
-      </div>
-        {% csrf_token %}
-    </form>
-    {% if msg %} <!--判断如果后端返回用户验证错误信息,前端页面输出错误信息-->
-
-        <p class="text-red">{{ msg }}</p>
-
-    {% endif %}
-{#    <div class="social-auth-links text-center">#}
-{#      <a href="{% url 'register' %}" class="btn btn-block btn-social btn-facebook btn-flat">#}
-{#          <i class="glyphicon glyphicon-user"></i> <div class="text-center">员工帐号注册通道</div>#}
-{#      </a>#}
-{#      <a href="{% url 'forgetpwd' %}" class="btn btn-block btn-social btn-google btn-flat">#}
-{#          <i class="glyphicon glyphicon-search"></i> <div class="text-center">帐号密码找回通道</div>#}
-{#      </a>#}
-{#    </div>#}
-    <!-- /.social-auth-links -->
-
-  </div>
-  <!-- /.login-box-body -->
+    </div>
 </div>
+
+<!-- /.login-logo -->
+<!--<div class="login-box-body form" style="opacity: 0.5;border-radius: 10px;background:silver">-->
+<!--<p class="login-box-msg"></p>-->
+<!--<p></p>-->
+<!--<form action="" method="post">-->
+<!--<div class="form-group has-feedback {% if login_form.errors.username %}has-error{% endif %}">-->
+<!--<input name="username" class="form-control" placeholder="用户名或手机号" value="{{ login_form.username.value }}">  &lt;!&ndash;type="email"前端控制email输入验证&ndash;&gt;-->
+<!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
+<!--</div>-->
+<!--<div class="form-group has-feedback {% if login_form.errors.password %}has-error{% endif %}">-->
+<!--<input name="password" type="password" class="form-control" placeholder="密码"-->
+<!--value="{{ login_form.password.value }}">-->
+<!--<span class="glyphicon glyphicon-lock form-control-feedback"></span>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-xs-8">-->
+<!--</div>-->
+<!--&lt;!&ndash; /.col &ndash;&gt;-->
+<!--<div class="col-xs-4">-->
+<!--<button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>-->
+<!--</div>-->
+<!--&lt;!&ndash; /.col &ndash;&gt;-->
+<!--</div>-->
+<!--{% csrf_token %}-->
+<!--</form>-->
+<!--{% if msg %} &lt;!&ndash;判断如果后端返回用户验证错误信息,前端页面输出错误信息&ndash;&gt;-->
+
+<!--<p class="text-red">{{ msg }}</p>-->
+
+<!--{% endif %}-->
+<!--{#    <div class="social-auth-links text-center">#}-->
+<!--{#      <a href="{% url 'register' %}" class="btn btn-block btn-social btn-facebook btn-flat">#}-->
+<!--{#          <i class="glyphicon glyphicon-user"></i> <div class="text-center">员工帐号注册通道</div>#}-->
+<!--{#      </a>#}-->
+<!--{#      <a href="{% url 'forgetpwd' %}" class="btn btn-block btn-social btn-google btn-flat">#}-->
+<!--{#          <i class="glyphicon glyphicon-search"></i> <div class="text-center">帐号密码找回通道</div>#}-->
+<!--{#      </a>#}-->
+<!--{#    </div>#}-->
+<!--&lt;!&ndash; /.social-auth-links &ndash;&gt;-->
+
+<!--</div>-->
+<!--&lt;!&ndash; /.login-box-body &ndash;&gt;-->
+<!--</div>-->
 <!-- /.login-box -->
 {% endblock %}
