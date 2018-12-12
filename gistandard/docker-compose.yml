@@ -20,6 +20,7 @@ services:
 
     web:
       build: .
+      image: gistandard_web:v1.1
       restart: always
       volumes:
           - /sandbox/media:/sandbox/gistandard/media
