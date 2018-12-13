@@ -140,13 +140,13 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/staticaa/'
+STATIC_ROOT = '/sandbox/gistandard/static'
+
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     # Add for vuejs
-    # os.path.join(BASE_DIR, "vuefront/dist/static"),
-
-    # os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, "vuefront/dist/static"),
 ]
 
 MEDIA_URL = '/media/'
