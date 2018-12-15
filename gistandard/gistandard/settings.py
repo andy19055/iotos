@@ -70,7 +70,12 @@ ROOT_URLCONF = 'gistandard.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['vuefront/dist',os.path.join(BASE_DIR, 'templates')],  #add for vue.js
+        'DIRS': [
+            'iview-admin/dist/',
+            'vue-manage-system/dist/',
+            'vuefront/dist',
+            os.path.join(BASE_DIR, 'templates')
+        ],  #add for vue.js
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,6 +151,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     # Add for vuejs
+    os.path.join(BASE_DIR, "iview-admin/dist/static"),
+    os.path.join(BASE_DIR, "vue-manage-system/dist/static"),
     os.path.join(BASE_DIR, "vuefront/dist/static"),
 ]
 
