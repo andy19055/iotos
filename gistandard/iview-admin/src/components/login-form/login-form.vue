@@ -59,7 +59,6 @@ export default {
   methods: {
     handleSubmit () {
       this.$refs.loginForm.validate((valid) => {
-        alert(1212)
         if (valid) {
           this.$emit('on-success-valid', {
             userName: this.form.userName,
