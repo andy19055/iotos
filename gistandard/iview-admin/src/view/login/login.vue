@@ -5,7 +5,7 @@
 <template>
   <div class="login">
     <div class="login-con">
-      <p class="maintitle">FAR 安全与健康管理平台</p>
+      <p class="maintitle">IOTOS智慧建筑综合应用平台</p>
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form-con">
           <login-form @on-success-valid="handleSubmit"></login-form>
