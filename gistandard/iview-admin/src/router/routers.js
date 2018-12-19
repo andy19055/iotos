@@ -63,7 +63,7 @@ export default [
         path: 'message_page',
         name: 'message_page',
         meta: {
-          icon: 'md-notifications',
+          icon: '_xiaoxi1',
           title: '消息中心'
         },
         component: () => import('@/view/single-page/message/index.vue')
