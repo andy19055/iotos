@@ -33,7 +33,7 @@ export default [
     redirect: '/home',
     component: Main,
     meta: {
-      hideInMenu: true,
+      hideInMenu: false,
       notCache: true
     },
     children: [
@@ -41,7 +41,7 @@ export default [
         path: '/home',
         name: 'home',
         meta: {
-          hideInMenu: true,
+          hideInMenu: false,
           title: '首页',
           notCache: true,
           icon: 'md-home'
@@ -51,40 +51,12 @@ export default [
     ]
   },
   {
-    path: '',
-    name: 'doc',
-    meta: {
-      title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
-    path: '/join',
-    name: 'join',
-    component: Main,
-    meta: {
-      hideInBread: true
-    },
-    children: [
-      {
-        path: 'join_page',
-        name: 'join_page',
-        meta: {
-          icon: '_qq',
-          title: 'QQ群'
-        },
-        component: () => import('@/view/join-page.vue')
-      }
-    ]
-  },
-  {
     path: '/message',
-    name: 'message',
+    name: '消息中心',
     component: Main,
     meta: {
-      hideInBread: true,
-      hideInMenu: true
+      hideInBread: false,
+      hideInMenu: false
     },
     children: [
       {
@@ -98,170 +70,295 @@ export default [
       }
     ]
   },
-  {
-    path: '/components',
-    name: 'components',
+    {
+    path: '/excel',
+    name: '关于我的',
     meta: {
-      icon: 'logo-buffer',
-      title: '组件'
+      icon: '_daibanshixiang',
+      title: '关于我的'
     },
     component: Main,
     children: [
       {
-        path: 'count_to_page',
-        name: 'count_to_page',
+        path: 'export-excel',
+        name: '考勤打卡',
         meta: {
-          icon: 'md-trending-up',
-          title: '数字渐变'
+          icon: '_kaoqin',
+          title: '考勤打卡'
         },
-        component: () => import('@/view/components/count-to/count-to.vue')
+        component: () => import('@/view/excel/export-excel.vue')
       },
       {
-        path: 'drag_list_page',
-        name: 'drag_list_page',
+        path: 'export-excel',
+        name: '我的日程',
         meta: {
-          icon: 'ios-infinite',
-          title: '拖拽列表'
+          icon: '_rili1',
+          title: '我的日程'
         },
-        component: () => import('@/view/components/drag-list/drag-list.vue')
+        component: () => import('@/view/excel/export-excel.vue')
       },
       {
-        path: 'tree_table_page',
-        name: 'tree_table_page',
+        path: 'export-excel',
+        name: '我的文档',
         meta: {
-          icon: 'md-git-branch',
-          title: '树状表格'
+          icon: '_icon_bangzhuwendang',
+          title: '我的文档'
         },
-        component: () => import('@/view/components/tree-table/index.vue')
+        component: () => import('@/view/excel/export-excel.vue')
       },
       {
-        path: 'cropper_page',
-        name: 'cropper_page',
+        path: 'upload-excel',
+        name: '用户信息',
         meta: {
-          icon: 'md-crop',
-          title: '图片裁剪'
+          icon: '_zhanghucaozuo',
+          title: '用户信息'
         },
-        component: () => import('@/view/components/cropper/cropper.vue')
+        component: () => import('@/view/excel/upload-excel.vue')
       },
       {
-        path: 'tables_page',
-        name: 'tables_page',
+        path: 'export-excel',
+        name: '权限设置',
         meta: {
-          icon: 'md-grid',
-          title: '多功能表格'
+          icon: '_mima',
+          title: '权限设置'
         },
-        component: () => import('@/view/components/tables/tables.vue')
+        component: () => import('@/view/excel/export-excel.vue')
       },
       {
-        path: 'split_pane_page',
-        name: 'split_pane_page',
+        path: 'export-excel',
+        name: '查看日志',
         meta: {
-          icon: 'md-pause',
-          title: '分割窗口'
+          icon: '_zijinrizhi',
+          title: '查看日志'
         },
-        component: () => import('@/view/components/split-pane/split-pane.vue')
+        component: () => import('@/view/excel/export-excel.vue')
+      },
+    ]
+  },
+  {
+    path: '',
+    name: '一卡通管理',
+    meta: {
+      title: '一卡通管理',
+      hideInMenu: false,
+      icon: '_ICqiaduxieqi'
+    },
+    children: [
+      {
+        path: '/join_page',
+        name: '停车场',
+        meta: {
+          icon: '_lubiantingchechang',
+          title: '停车场'
+        },
+        component: () => import('@/view/single-page/home')
       },
       {
-        path: 'markdown_page',
-        name: 'markdown_page',
+        path: '/join_page',
+        name: '门禁',
         meta: {
-          icon: 'logo-markdown',
-          title: 'Markdown编辑器'
+          icon: '_menci',
+          title: '门禁'
         },
-        component: () => import('@/view/components/markdown/markdown.vue')
+        component: () => import('@/view/single-page/home')
       },
       {
-        path: 'editor_page',
-        name: 'editor_page',
+        path: '/join_page',
+        name: '考勤',
         meta: {
-          icon: 'ios-create',
-          title: '富文本编辑器'
+          icon: '_kaoqinzhongxin01',
+          title: '考勤'
         },
-        component: () => import('@/view/components/editor/editor.vue')
+        component: () => import('@/view/single-page/home')
       },
       {
-        path: 'icons_page',
-        name: 'icons_page',
+        path: '/join_page',
+        name: '访客',
         meta: {
-          icon: '_bear',
-          title: '自定义图标'
+          icon: '_iconfontrecentman0728',
+          title: '访客'
         },
-        component: () => import('@/view/components/icons/icons.vue')
+        component: () => import('@/view/single-page/home')
+      },
+      {
+        path: '/join_page',
+        name: '消费',
+        meta: {
+          icon: '_iconzijinguanli01',
+          title: '消费'
+        },
+        component: () => import('@/view/single-page/home')
+      }
+    ]
+  },
+  {
+    path: '/join',
+    name: '公共信息管理',
+    component: Main,
+    meta: {
+      hideInBread: false,
+      title: '公共信息管理',
+      icon: '_shequguanli_bianminxinxi'
+    },
+    children: [
+      {
+        path: 'join_page',
+        name: '信息发布',
+        meta: {
+          icon: '_kuaisubianpai',
+          title: '信息发布'
+        },
+        component: () => import('@/view/join-page.vue')
+      },
+      {
+        path: 'join_page',
+        name: '设置一体机',
+        meta: {
+          icon: '_shebeizhuangtai',
+          title: '设置一体机'
+        },
+        component: () => import('@/view/join-page.vue')
       }
     ]
   },
   {
     path: '/update',
-    name: 'update',
+    name: '设备运行管理',
     meta: {
-      icon: 'md-cloud-upload',
-      title: '数据上传'
+      icon: '_kuaisuyunxing01',
+      title: '设备运行管理'
     },
     component: Main,
     children: [
       {
         path: 'update_table_page',
-        name: 'update_table_page',
+        name: '空调分室计量',
         meta: {
-          icon: 'ios-document',
-          title: '上传Csv'
+          icon: '_yibiaopan',
+          title: '空调分室计量'
         },
         component: () => import('@/view/update/update-table.vue')
       },
       {
         path: 'update_paste_page',
-        name: 'update_paste_page',
+        name: '能源能耗',
         meta: {
-          icon: 'md-clipboard',
-          title: '粘贴表格数据'
+          icon: '_jiedianguanli',
+          title: '能源能耗'
+        },
+        component: () => import('@/view/update/update-paste.vue')
+      },
+      {
+        path: 'update_paste_page',
+        name: '空调及通风',
+        meta: {
+          icon: '_songfeng',
+          title: '空调及通风'
+        },
+        component: () => import('@/view/update/update-paste.vue')
+      },
+      {
+        path: 'update_paste_page',
+        name: '给排水设备',
+        meta: {
+          icon: '_iconyongliangreshuiqi',
+          title: '给排水设备'
+        },
+        component: () => import('@/view/update/update-paste.vue')
+      },
+      {
+        path: 'update_paste_page',
+        name: '公共照明',
+        meta: {
+          icon: '_zhaoming',
+          title: '公共照明'
         },
         component: () => import('@/view/update/update-paste.vue')
       }
     ]
   },
   {
-    path: '/excel',
-    name: 'excel',
+    path: '/components',
+    name: '物业管理',
     meta: {
-      icon: 'ios-stats',
-      title: 'EXCEL导入导出'
+      icon: '_gaoceng',
+      title: '物业管理'
     },
     component: Main,
     children: [
       {
-        path: 'upload-excel',
-        name: 'upload-excel',
+        path: 'count_to_page',
+        name: '招商租赁',
         meta: {
-          icon: 'md-add',
-          title: '导入EXCEL'
+          icon: '_hezuohuobanmiyueguanli',
+          title: '招商租赁'
         },
-        component: () => import('@/view/excel/upload-excel.vue')
+        component: () => import('@/view/components/count-to/count-to.vue')
       },
       {
-        path: 'export-excel',
-        name: 'export-excel',
+        path: 'drag_list_page',
+        name: '财务管理',
         meta: {
-          icon: 'md-download',
-          title: '导出EXCEL'
+          icon: '_shouzhiguanli01',
+          title: '财务管理'
         },
-        component: () => import('@/view/excel/export-excel.vue')
+        component: () => import('@/view/components/drag-list/drag-list.vue')
+      },
+      {
+        path: 'tree_table_page',
+        name: '客户服务',
+        meta: {
+          icon: '_kehuzhongxin01',
+          title: '客户服务'
+        },
+        component: () => import('@/view/components/tree-table/index.vue')
+      },
+      {
+        path: 'cropper_page',
+        name: '设备能耗',
+        meta: {
+          icon: '_nenghaoshuju',
+          title: '设备能耗'
+        },
+        component: () => import('@/view/components/cropper/cropper.vue')
+      },
+      {
+        path: 'tables_page',
+        name: '保安保洁',
+        meta: {
+          icon: '_shuibiao',
+          title: '保安保洁'
+        },
+        component: () => import('@/view/components/tables/tables.vue')
       }
     ]
   },
   {
     path: '/tools_methods',
-    name: 'tools_methods',
+    name: '设备安全管理',
     meta: {
-      hideInBread: true
+      icon: '_anquanjingbao',
+      title: '设备安全管理',
+      hideInBread: false
     },
     component: Main,
     children: [
       {
         path: 'tools_methods_page',
-        name: 'tools_methods_page',
+        name: '通信设置',
+        meta: {
+          icon: '_shezhi2',
+          title: '通信设置',
+          beforeCloseName: 'before_close_normal'
+        },
+        component: () => import('@/view/tools-methods/tools-methods.vue')
+      },
+      {
+        path: 'tools_methods_page',
+        name: '运行参数',
         meta: {
           icon: 'ios-hammer',
-          title: '工具方法',
+          title: '运行参数',
           beforeCloseName: 'before_close_normal'
         },
         component: () => import('@/view/tools-methods/tools-methods.vue')
@@ -270,194 +367,33 @@ export default [
   },
   {
     path: '/i18n',
-    name: 'i18n',
+    name: '信息安全管理',
     meta: {
-      hideInBread: true
+      icon: '_anquan1',
+      title: '信息安全管理',
+      hideInBread: false
     },
     component: Main,
     children: [
       {
         path: 'i18n_page',
-        name: 'i18n_page',
+        name: '网络设置',
         meta: {
-          icon: 'md-planet',
-          title: 'i18n - {{ i18n_page }}'
+          icon: '_xitongguanli_canshushezhi',
+          title: '网络设置'
         },
         component: () => import('@/view/i18n/i18n-page.vue')
-      }
-    ]
-  },
-  {
-    path: '/error_store',
-    name: 'error_store',
-    meta: {
-      hideInBread: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'error_store_page',
-        name: 'error_store_page',
-        meta: {
-          icon: 'ios-bug',
-          title: '错误收集'
-        },
-        component: () => import('@/view/error-store/error-store.vue')
-      }
-    ]
-  },
-  {
-    path: '/error_logger',
-    name: 'error_logger',
-    meta: {
-      hideInBread: true,
-      hideInMenu: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'error_logger_page',
-        name: 'error_logger_page',
-        meta: {
-          icon: 'ios-bug',
-          title: '错误收集'
-        },
-        component: () => import('@/view/single-page/error-logger.vue')
-      }
-    ]
-  },
-  {
-    path: '/directive',
-    name: 'directive',
-    meta: {
-      hideInBread: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'directive_page',
-        name: 'directive_page',
-        meta: {
-          icon: 'ios-navigate',
-          title: '指令'
-        },
-        component: () => import('@/view/directive/directive.vue')
-      }
-    ]
-  },
-  {
-    path: '/multilevel',
-    name: 'multilevel',
-    meta: {
-      icon: 'md-menu',
-      title: '多级菜单'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'level_2_1',
-        name: 'level_2_1',
-        meta: {
-          icon: 'md-funnel',
-          title: '二级-1'
-        },
-        component: () => import('@/view/multilevel/level-2-1.vue')
       },
       {
-        path: 'level_2_2',
-        name: 'level_2_2',
+        path: 'tools_methods_page',
+        name: '告警设置',
         meta: {
-          access: ['super_admin'],
-          icon: 'md-funnel',
-          showAlways: true,
-          title: '二级-2'
-        },
-        component: parentView,
-        children: [
-          {
-            path: 'level_2_2_1',
-            name: 'level_2_2_1',
-            meta: {
-              icon: 'md-funnel',
-              title: '三级'
-            },
-            component: () => import('@/view/multilevel/level-2-2/level-2-2-1.vue')
-          },
-          {
-            path: 'level_2_2_2',
-            name: 'level_2_2_2',
-            meta: {
-              icon: 'md-funnel',
-              title: '三级'
-            },
-            component: () => import('@/view/multilevel/level-2-2/level-2-2-2.vue')
-          }
-        ]
-      },
-      {
-        path: 'level_2_3',
-        name: 'level_2_3',
-        meta: {
-          icon: 'md-funnel',
-          title: '二级-3'
-        },
-        component: () => import('@/view/multilevel/level-2-3.vue')
-      }
-    ]
-  },
-  {
-    path: '/argu',
-    name: 'argu',
-    meta: {
-      hideInMenu: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'params/:id',
-        name: 'params',
-        meta: {
-          icon: 'md-flower',
-          title: route => `{{ params }}-${route.params.id}`,
-          notCache: true,
+          icon: '_baojingshezhi',
+          title: '告警设置',
           beforeCloseName: 'before_close_normal'
         },
-        component: () => import('@/view/argu-page/params.vue')
-      },
-      {
-        path: 'query',
-        name: 'query',
-        meta: {
-          icon: 'md-flower',
-          title: route => `{{ query }}-${route.query.id}`,
-          notCache: true
-        },
-        component: () => import('@/view/argu-page/query.vue')
+        component: () => import('@/view/tools-methods/tools-methods.vue')
       }
     ]
-  },
-  {
-    path: '/401',
-    name: 'error_401',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/401.vue')
-  },
-  {
-    path: '/500',
-    name: 'error_500',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/500.vue')
-  },
-  {
-    path: '*',
-    name: 'error_404',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/404.vue')
   }
 ]
