@@ -33,7 +33,7 @@ export default [
     redirect: '/home',
     component: Main,
     meta: {
-      hideInMenu: false,
+      hideInMenu: true,
       notCache: true
     },
     children: [
