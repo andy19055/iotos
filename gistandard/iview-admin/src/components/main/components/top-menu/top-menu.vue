@@ -1,38 +1,16 @@
 <template>
   <div>
     <Menu mode="horizontal" :theme="theme1" active-name="1" @on-select="mainMenuSelected">
-        <MenuItem name="1">
-          <Icon type=" iconfont icon-tongxunlu011" size="20"/>
-            基本业务办公
+      <template v-for="item in menulist">
+        <MenuItem :name="item.name">
+          <Icon :type="item.icon" size="20"/>
+          {{item.text}}
         </MenuItem>
-        <MenuItem name="2">
-            <Icon type=" iconfont icon-ICqiaduxieqi" size="20"/>
-            智能一卡通
-        </MenuItem>
-      <MenuItem name="3">
-            <Icon type=" iconfont icon-shequguanli_bianminxinxi" size="20"/>
-            公共信息服务
-        </MenuItem>
-            <MenuItem name="4">
-            <Icon type=" iconfont icon-kuaisuyunxing01" size="20"/>
-            设备运行管理
-        </MenuItem>
-            <MenuItem name="5">
-            <Icon type=" iconfont icon-gaoceng" size="20"/>
-            物业管理
-        </MenuItem>
-            <MenuItem name="6">
-            <Icon type=" iconfont icon-anquanjingbao" size="20"/>
-            设备安全管理
-        </MenuItem>
-            <MenuItem name="7">
-            <Icon type=" iconfont icon-anquan1" size="20"/>
-            信息安全管理
-        </MenuItem>
+      </template>
         <Submenu name="8">
             <template slot="title">
                 <Icon type="ios-stats" size="20"/>
-                统计分析
+                综合统计分析
             </template>
             <MenuGroup title="使用">
                 <MenuItem name="8-1">新增和启动</MenuItem>
@@ -44,10 +22,6 @@
                 <MenuItem name="8-5">流失用户</MenuItem>
             </MenuGroup>
         </Submenu>
-        <MenuItem name="9">
-            <Icon type="ios-construct" size="20"/>
-            综合设置
-        </MenuItem>
     </Menu>
   </div>
 </template>
@@ -56,13 +30,53 @@
     name: 'TopMenu',
     data () {
       return {
-        theme1: 'dark'
+        theme1: 'dark',
+        menulist:[
+          {
+            text: '基本业务办公',
+            name: '1',
+            icon: ' iconfont icon-tongxunlu011'
+          },
+          {
+            text: '物业管理',
+            name: '2',
+            icon: ' iconfont icon-gaoceng'
+          },
+          {
+            text: '智能一卡通',
+            name: '3',
+            icon: ' iconfont icon-ICqiaduxieqi'
+          },
+          {
+            text: '公共信息服务',
+            name: '4',
+            icon: ' iconfont icon-shequguanli_bianminxinxi'
+          },
+          {
+            text: '设备运行管理',
+            name: '5',
+            icon: ' iconfont icon-kuaisuyunxing01'
+          },
+          {
+            text: '设备安全管理',
+            name: '6',
+            icon: ' iconfont icon-anquanjingbao'
+          },
+          {
+            text: '信息安全管理',
+            name: '7',
+            icon: ' iconfont icon-anquan1'
+          }
+        ]
       }
     },
     methods:{
       mainMenuSelected (name) {
-//        alert(name);
-        return name;
+        this.$Modal.info({
+          title: '提示',
+          content: name
+        })
+        this.$emit('on-select',name)
       }
     }
   }

@@ -10,7 +10,7 @@
       </side-menu>
     </Sider>
     <Layout>
-      <TopMenu v-model="isFullscreen" style="margin-right: 10px;"/>
+      <top-menu v-model="isFullscreen"/>
       <Header class="header-con">
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
           <user :message-unread-count="unreadCount" :user-avator="userAvator"/>
