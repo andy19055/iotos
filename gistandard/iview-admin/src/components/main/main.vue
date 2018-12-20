@@ -10,11 +10,14 @@
       </side-menu>
     </Sider>
     <Layout>
+      <TopMenu v-model="isFullscreen" style="margin-right: 10px;"/>
       <Header class="header-con">
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
           <user :message-unread-count="unreadCount" :user-avator="userAvator"/>
           <language v-if="$config.useI18n" @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>
           <error-store v-if="$config.plugin['error-store'] && $config.plugin['error-store'].showInHeader" :has-read="hasReadErrorPage" :count="errorCount"></error-store>
+          <!--<Icon @click.native="handleChange" :size="20" type="_daibanshixiang"/>-->
+          <!--<Icon type="_daibanshixiang"></Icon>-->
           <fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>
         </header-bar>
       </Header>
@@ -49,6 +52,8 @@ import routers from '@/router/routers';
 import minLogo from '@/assets/images/logo-min.png';
 import maxLogo from '@/assets/images/logo.png';
 import './main.less';
+
+import TopMenu from './components/top-menu';
 export default {
   name: 'Main',
   components: {
@@ -59,7 +64,8 @@ export default {
     Fullscreen,
     ErrorStore,
     User,
-    ABackTop
+    ABackTop,
+    TopMenu
   },
   data () {
     return {
