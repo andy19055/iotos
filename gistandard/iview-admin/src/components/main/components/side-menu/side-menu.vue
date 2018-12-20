@@ -66,6 +66,10 @@ export default {
     openNames: {
       type: Array,
       default: () => []
+    },
+    topMenuName: {
+      type: String,
+      default: '1'
     }
   },
   data () {
@@ -101,6 +105,12 @@ export default {
     openedNames () {
       this.$nextTick(() => {
         this.$refs.menu.updateOpened()
+      })
+    },
+    topMenuName (name){
+      this.$Modal.error({
+        title:'error',
+        content: name,
       })
     }
   },

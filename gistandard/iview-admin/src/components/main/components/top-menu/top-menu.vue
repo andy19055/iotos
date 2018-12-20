@@ -72,10 +72,6 @@
     },
     methods:{
       mainMenuSelected (name) {
-        this.$Modal.info({
-          title: '提示',
-          content: name
-        })
         this.$emit('on-select',name)
       }
     }

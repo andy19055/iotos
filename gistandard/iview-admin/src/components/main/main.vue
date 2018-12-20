@@ -1,7 +1,7 @@
 <template>
   <Layout style="height: 100%" class="main">
     <Sider hide-trigger collapsible :width="280" :collapsed-width="64" v-model="collapsed" class="left-sider" :style="{overflow: 'hidden'}">
-      <side-menu accordion ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList">
+      <side-menu accordion ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList" :topMenuName="topMenuName">
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
           <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
@@ -10,7 +10,7 @@
       </side-menu>
     </Sider>
     <Layout>
-      <top-menu v-model="isFullscreen"/>
+      <top-menu @on-select="topMenuSelected"/>
       <Header class="header-con">
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
           <user :message-unread-count="unreadCount" :user-avator="userAvator"/>
@@ -72,7 +72,8 @@ export default {
       collapsed: false,
       minLogo,
       maxLogo,
-      isFullscreen: false
+      isFullscreen: false,
+      topMenuName: '1'
     };
   },
   computed: {
@@ -150,6 +151,9 @@ export default {
     },
     handleClick (item) {
       this.turnToPage(item);
+    },
+    topMenuSelected(name) {
+      this.topMenuName = name
     }
   },
   watch: {
