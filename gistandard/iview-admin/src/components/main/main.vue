@@ -1,10 +1,10 @@
 <template>
   <Layout style="height: 100%" class="main">
-    <Sider hide-trigger collapsible :width="280" :collapsed-width="64" v-model="collapsed" class="left-sider" :style="{overflow: 'hidden'}">
+    <Sider hide-trigger collapsible :width="250" :collapsed-width="64" v-model="collapsed" class="left-sider" :style="{overflow: 'hidden'}">
       <side-menu :accordion="accordion" ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList">
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
-          <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
+          <img v-show="!collapsed" :src="maxLogo" key="max-logo"/>
           <img v-show="collapsed" :src="minLogo" key="min-logo" style="height: 100% !important"/>
         </div>
       </side-menu>
@@ -74,7 +74,8 @@ export default {
       isFullscreen: false,
       topMenuName: '1',
       realtimeMenu: this.$store.getters.menuList,
-      accordion: false
+      accordion: false,
+      screenHeight:0
     };
   },
   computed: {
@@ -109,7 +110,7 @@ export default {
     },
     unreadCount () {
       return this.$store.state.user.unreadCount;
-    },
+    }
   },
   methods: {
     ...mapMutations([
@@ -162,8 +163,18 @@ export default {
       this.topMenuName = name
       this.menuList = getMenuByRouterByTopmenu(routers,name)
       this.$refs.sideMenu.updateOpenName(name);
+    },
+    getHeight(){
+      this.screenHeight = window.innerHeight-70;
     }
   },
+  created(){
+    window.addEventListener('resize', this.getHeight);
+    this.getHeight()
+  },
+  destroyed(){
+    window.removeEventListener('resize', this.getHeight)
+  },
   watch: {
     '$route' (newRoute) {
       const { name, query, params, meta } = newRoute;
