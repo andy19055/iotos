@@ -21,6 +21,7 @@ export default [
   {
     path: '/login',
     name: 'login',
+    topMenuCommon: true,        //router.js中添加条件：有设置topMenuCommon的且值为true的，就认为是顶部菜单共有的操作菜单！再时候显示取决于hideInMenu！
     meta: {
       title: 'Login - 登录',
       hideInMenu: true,
@@ -30,10 +31,11 @@ export default [
   {
     path: '/',
     name: '_home',
+    topMenuCommon: true,        //router.js中添加条件：有设置topMenuCommon的且值为true的，就认为是顶部菜单共有的操作菜单！再时候显示取决于hideInMenu！
     redirect: '/home',
     component: Main,
     meta: {
-      hideInMenu: true,
+      hideInMenu: false,
       notCache: true,
     },
     children: [
@@ -41,7 +43,6 @@ export default [
         path: '/home',
         name: 'home',
         meta: {
-          hideInMenu: false,
           title: '首页',
           notCache: true,
           icon: 'md-home'
@@ -53,11 +54,11 @@ export default [
   {
     path: '/message',
     name: '消息中心',
+    topMenuCommon: true,        //router.js中添加条件：有设置topMenuCommon的且值为true的，就认为是顶部菜单共有的操作菜单！再时候显示取决于hideInMenu！
     component: Main,
     meta: {
       hideInBread: false,
-      hideInMenu: false,
-      topMenuName: '-1'       //-1，那么作为所有顶部菜单项都会带有的，至于是否显示，只取决于hideInMenu设置；没有meta.topMenuName的，或者有且设置了值为"-1"的，就认为是顶部菜单共有的操作菜单！getMenuByRouterByTopmenu
+      hideInMenu: false
     },
     children: [
       {
@@ -77,7 +78,6 @@ export default [
     meta: {
       icon: '_daibanshixiang',
       title: '基本业务办公',
-      topMenuName: '1',
       hideInMenu: false
     },
     component: Main,
@@ -143,8 +143,7 @@ export default [
     name: '物业管理',
     meta: {
       icon: '_gaoceng',
-      title: '物业管理',
-      topMenuName: '2'
+      title: '物业管理'
     },
     component: Main,
     children: [
@@ -201,8 +200,7 @@ export default [
     meta: {
       title: '智能一卡通',
       hideInMenu: false,
-      icon: '_ICqiaduxieqi',
-      topMenuName: '3'
+      icon: '_ICqiaduxieqi'
     },
     children: [
       {
@@ -259,8 +257,7 @@ export default [
     meta: {
       hideInBread: false,
       title: '公共信息服务',
-      icon: '_shequguanli_bianminxinxi',
-      topMenuName: '4'
+      icon: '_shequguanli_bianminxinxi'
     },
     children: [
       {
@@ -288,8 +285,7 @@ export default [
     name: '设备运行管理',
     meta: {
       icon: '_kuaisuyunxing01',
-      title: '设备运行管理',
-      topMenuName: '5'
+      title: '设备运行管理'
     },
     component: Main,
     children: [
@@ -346,8 +342,7 @@ export default [
     meta: {
       icon: '_anquanjingbao',
       title: '设备安全管理',
-      hideInBread: false,
-      topMenuName: '6'
+      hideInBread: false
     },
     component: Main,
     children: [
@@ -379,8 +374,7 @@ export default [
     meta: {
       icon: '_anquan1',
       title: '信息安全管理',
-      hideInBread: false,
-      topMenuName: '7'
+      hideInBread: false
     },
     component: Main,
     children: [

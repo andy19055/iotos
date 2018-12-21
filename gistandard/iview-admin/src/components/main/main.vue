@@ -110,13 +110,6 @@ export default {
     unreadCount () {
       return this.$store.state.user.unreadCount;
     },
-//    openedNames () {
-//
-//      forEach(this.menuList,item => {
-//        item.key ==
-//      })
-//      return
-//    }
   },
   methods: {
     ...mapMutations([
@@ -168,6 +161,7 @@ export default {
     topMenuSelected(name) {
       this.topMenuName = name
       this.menuList = getMenuByRouterByTopmenu(routers,name)
+      this.$refs.sideMenu.updateOpenName(name);
     }
   },
   watch: {
@@ -179,7 +173,7 @@ export default {
       });
       this.setBreadCrumb(newRoute);
       this.setTagNavList(getNewTagList(this.tagNavList, newRoute));
-      this.$refs.sideMenu.updateOpenName(newRoute.name);
+//      this.$refs.sideMenu.updateOpenName(newRoute.name);
     }
   },
   mounted () {

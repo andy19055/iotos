@@ -2,7 +2,7 @@
   <div>
     <Menu mode="horizontal" :theme="theme1" active-name="1" @on-select="mainMenuSelected">
       <template v-for="item in menulist">
-        <MenuItem :name="item.name">
+        <MenuItem :name="item.text">
           <Icon :type="item.icon" size="20"/>
           {{item.text}}
         </MenuItem>
@@ -34,37 +34,30 @@
         menulist:[
           {
             text: '基本业务办公',
-            name: '1',
             icon: ' iconfont icon-tongxunlu011'
           },
           {
             text: '物业管理',
-            name: '2',
             icon: ' iconfont icon-gaoceng'
           },
           {
             text: '智能一卡通',
-            name: '3',
             icon: ' iconfont icon-ICqiaduxieqi'
           },
           {
             text: '公共信息服务',
-            name: '4',
             icon: ' iconfont icon-shequguanli_bianminxinxi'
           },
           {
             text: '设备运行管理',
-            name: '5',
             icon: ' iconfont icon-kuaisuyunxing01'
           },
           {
             text: '设备安全管理',
-            name: '6',
             icon: ' iconfont icon-anquanjingbao'
           },
           {
             text: '信息安全管理',
-            name: '7',
             icon: ' iconfont icon-anquan1'
           }
         ]
