@@ -66,10 +66,6 @@ export default {
     openNames: {
       type: Array,
       default: () => []
-    },
-    topMenuName: {
-      type: String,
-      default: '1'
     }
   },
   data () {
@@ -91,7 +87,7 @@ export default {
   },
   computed: {
     textColor () {
-      return this.theme === 'dark' ? '#fff' : '#495060'
+      return this.theme === 'dark' ? '#fff' : '#495060';
     }
   },
   watch: {
@@ -105,12 +101,6 @@ export default {
     openedNames () {
       this.$nextTick(() => {
         this.$refs.menu.updateOpened()
-      })
-    },
-    topMenuName (name){
-      this.$Modal.error({
-        title:'error',
-        content: name,
       })
     }
   },

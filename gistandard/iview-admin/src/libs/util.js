@@ -49,6 +49,26 @@ export const getMenuByRouter = (list, access) => {
   return res
 }
 
+export const getMenuByRouterByTopmenu = (list,topName) => {
+  let res = []
+  forEach(list, item => {
+    if (!item.meta || ((item.meta && !item.meta.hideInMenu) && (!item.meta.topMenuName || (item.meta.topMenuName == topName || item.meta.topMenuName == '-1')))) {
+      //router.js中添加条件：没有设置meta.topMenuName的，或者设置了值为"-1"的，就认为是顶部菜单共有的操作菜单！
+      let obj = {
+        icon: (item.meta && item.meta.icon) || '',
+        name: item.name,
+        meta: item.meta
+      }
+      if ((hasChild(item) || (item.meta && item.meta.showAlways)) && showThisMenuEle(item)) {
+        obj.children = getMenuByRouter(item.children,topName)
+      }
+      if (item.meta && item.meta.href) obj.href = item.meta.href
+      res.push(obj)
+    }
+  })
+  return res
+}
+
 /**
  * @param {Array} routeMetched 当前路由metched
  * @returns {Array}

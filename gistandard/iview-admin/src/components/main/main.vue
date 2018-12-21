@@ -1,7 +1,7 @@
 <template>
   <Layout style="height: 100%" class="main">
     <Sider hide-trigger collapsible :width="280" :collapsed-width="64" v-model="collapsed" class="left-sider" :style="{overflow: 'hidden'}">
-      <side-menu accordion ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList" :topMenuName="topMenuName">
+      <side-menu :accordion="accordion" ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList">
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
           <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
@@ -46,13 +46,12 @@ import ABackTop from './components/a-back-top';
 import Fullscreen from './components/fullscreen';
 import Language from './components/language';
 import ErrorStore from './components/error-store';
-import { mapMutations, mapActions, mapGetters } from 'vuex';
-import { getNewTagList, getNextRoute, routeEqual } from '@/libs/util';
+import { mapMutations, mapActions, mapGetters} from 'vuex';
+import { getNewTagList, getNextRoute, routeEqual, getHomeRoute, getMenuByRouterByTopmenu } from '@/libs/util';
 import routers from '@/router/routers';
 import minLogo from '@/assets/images/logo-min.png';
 import maxLogo from '@/assets/images/logo.png';
 import './main.less';
-
 import TopMenu from './components/top-menu';
 export default {
   name: 'Main',
@@ -73,7 +72,9 @@ export default {
       minLogo,
       maxLogo,
       isFullscreen: false,
-      topMenuName: '1'
+      topMenuName: '1',
+      realtimeMenu: this.$store.getters.menuList,
+      accordion: false
     };
   },
   computed: {
@@ -92,8 +93,13 @@ export default {
     cacheList () {
       return ['ParentView', ...this.tagNavList.length ? this.tagNavList.filter(item => !(item.meta && item.meta.notCache)).map(item => item.name) : []];
     },
-    menuList () {
-      return this.$store.getters.menuList;
+    menuList: {
+      get(){
+        return this.realtimeMenu
+      },
+      set(v){
+        this.realtimeMenu = v
+      },
     },
     local () {
       return this.$store.state.app.local;
@@ -103,7 +109,14 @@ export default {
     },
     unreadCount () {
       return this.$store.state.user.unreadCount;
-    }
+    },
+//    openedNames () {
+//
+//      forEach(this.menuList,item => {
+//        item.key ==
+//      })
+//      return
+//    }
   },
   methods: {
     ...mapMutations([
@@ -154,6 +167,7 @@ export default {
     },
     topMenuSelected(name) {
       this.topMenuName = name
+      this.menuList = getMenuByRouterByTopmenu(routers,name)
     }
   },
   watch: {

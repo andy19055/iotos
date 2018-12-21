@@ -23,8 +23,8 @@ export default [
     name: 'login',
     meta: {
       title: 'Login - 登录',
-      hideInMenu: true
-    },
+      hideInMenu: true,
+   },
     component: () => import('@/view/login/login.vue')
   },
   {
@@ -34,7 +34,7 @@ export default [
     component: Main,
     meta: {
       hideInMenu: true,
-      notCache: true
+      notCache: true,
     },
     children: [
       {
@@ -56,7 +56,8 @@ export default [
     component: Main,
     meta: {
       hideInBread: false,
-      hideInMenu: false
+      hideInMenu: false,
+      topMenuName: '-1'       //-1，那么作为所有顶部菜单项都会带有的，至于是否显示，只取决于hideInMenu设置；没有meta.topMenuName的，或者有且设置了值为"-1"的，就认为是顶部菜单共有的操作菜单！getMenuByRouterByTopmenu
     },
     children: [
       {
@@ -72,10 +73,12 @@ export default [
   },
     {
     path: '/excel',
-    name: '关于我的',
+    name: '基本业务办公',
     meta: {
       icon: '_daibanshixiang',
-      title: '关于我的'
+      title: '基本业务办公',
+      topMenuName: '1',
+      hideInMenu: false
     },
     component: Main,
     children: [
@@ -136,153 +139,12 @@ export default [
     ]
   },
   {
-    path: '',
-    name: '一卡通管理',
-    meta: {
-      title: '一卡通管理',
-      hideInMenu: false,
-      icon: '_ICqiaduxieqi'
-    },
-    children: [
-      {
-        path: '/join_page',
-        name: '停车场',
-        meta: {
-          icon: '_lubiantingchechang',
-          title: '停车场'
-        },
-        component: () => import('@/view/single-page/home')
-      },
-      {
-        path: '/join_page',
-        name: '门禁',
-        meta: {
-          icon: '_menci',
-          title: '门禁'
-        },
-        component: () => import('@/view/single-page/home')
-      },
-      {
-        path: '/join_page',
-        name: '考勤',
-        meta: {
-          icon: '_kaoqinzhongxin01',
-          title: '考勤'
-        },
-        component: () => import('@/view/single-page/home')
-      },
-      {
-        path: '/join_page',
-        name: '访客',
-        meta: {
-          icon: '_iconfontrecentman0728',
-          title: '访客'
-        },
-        component: () => import('@/view/single-page/home')
-      },
-      {
-        path: '/join_page',
-        name: '消费',
-        meta: {
-          icon: '_iconzijinguanli01',
-          title: '消费'
-        },
-        component: () => import('@/view/single-page/home')
-      }
-    ]
-  },
-  {
-    path: '/join',
-    name: '公共信息管理',
-    component: Main,
-    meta: {
-      hideInBread: false,
-      title: '公共信息管理',
-      icon: '_shequguanli_bianminxinxi'
-    },
-    children: [
-      {
-        path: 'join_page',
-        name: '信息发布',
-        meta: {
-          icon: '_kuaisubianpai',
-          title: '信息发布'
-        },
-        component: () => import('@/view/join-page.vue')
-      },
-      {
-        path: 'join_page',
-        name: '设置一体机',
-        meta: {
-          icon: '_shebeizhuangtai',
-          title: '设置一体机'
-        },
-        component: () => import('@/view/join-page.vue')
-      }
-    ]
-  },
-  {
-    path: '/update',
-    name: '设备运行管理',
-    meta: {
-      icon: '_kuaisuyunxing01',
-      title: '设备运行管理'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'update_table_page',
-        name: '空调分室计量',
-        meta: {
-          icon: '_yibiaopan',
-          title: '空调分室计量'
-        },
-        component: () => import('@/view/update/update-table.vue')
-      },
-      {
-        path: 'update_paste_page',
-        name: '能源能耗',
-        meta: {
-          icon: '_jiedianguanli',
-          title: '能源能耗'
-        },
-        component: () => import('@/view/update/update-paste.vue')
-      },
-      {
-        path: 'update_paste_page',
-        name: '空调及通风',
-        meta: {
-          icon: '_songfeng',
-          title: '空调及通风'
-        },
-        component: () => import('@/view/update/update-paste.vue')
-      },
-      {
-        path: 'update_paste_page',
-        name: '给排水设备',
-        meta: {
-          icon: '_iconyongliangreshuiqi',
-          title: '给排水设备'
-        },
-        component: () => import('@/view/update/update-paste.vue')
-      },
-      {
-        path: 'update_paste_page',
-        name: '公共照明',
-        meta: {
-          icon: '_zhaoming',
-          title: '公共照明'
-        },
-        component: () => import('@/view/update/update-paste.vue')
-      }
-    ]
-  },
-  {
     path: '/components',
     name: '物业管理',
     meta: {
       icon: '_gaoceng',
-      title: '物业管理'
+      title: '物业管理',
+      topMenuName: '2'
     },
     component: Main,
     children: [
@@ -334,12 +196,158 @@ export default [
     ]
   },
   {
+    path: '',
+    name: '智能一卡通',
+    meta: {
+      title: '智能一卡通',
+      hideInMenu: false,
+      icon: '_ICqiaduxieqi',
+      topMenuName: '3'
+    },
+    children: [
+      {
+        path: '/join_page',
+        name: '停车场',
+        meta: {
+          icon: '_lubiantingchechang',
+          title: '停车场'
+        },
+        component: () => import('@/view/single-page/home')
+      },
+      {
+        path: '/join_page',
+        name: '门禁',
+        meta: {
+          icon: '_menci',
+          title: '门禁'
+        },
+        component: () => import('@/view/single-page/home')
+      },
+      {
+        path: '/join_page',
+        name: '考勤',
+        meta: {
+          icon: '_kaoqinzhongxin01',
+          title: '考勤'
+        },
+        component: () => import('@/view/single-page/home')
+      },
+      {
+        path: '/join_page',
+        name: '访客',
+        meta: {
+          icon: '_iconfontrecentman0728',
+          title: '访客'
+        },
+        component: () => import('@/view/single-page/home')
+      },
+      {
+        path: '/join_page',
+        name: '消费',
+        meta: {
+          icon: '_iconzijinguanli01',
+          title: '消费'
+        },
+        component: () => import('@/view/single-page/home')
+      }
+    ]
+  },
+  {
+    path: '/join',
+    name: '公共信息服务',
+    component: Main,
+    meta: {
+      hideInBread: false,
+      title: '公共信息服务',
+      icon: '_shequguanli_bianminxinxi',
+      topMenuName: '4'
+    },
+    children: [
+      {
+        path: 'join_page',
+        name: '信息发布',
+        meta: {
+          icon: '_kuaisubianpai',
+          title: '信息发布'
+        },
+        component: () => import('@/view/join-page.vue')
+      },
+      {
+        path: 'join_page',
+        name: '设置一体机',
+        meta: {
+          icon: '_shebeizhuangtai',
+          title: '设置一体机'
+        },
+        component: () => import('@/view/join-page.vue')
+      }
+    ]
+  },
+  {
+    path: '/update',
+    name: '设备运行管理',
+    meta: {
+      icon: '_kuaisuyunxing01',
+      title: '设备运行管理',
+      topMenuName: '5'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'update_table_page',
+        name: '空调分室计量',
+        meta: {
+          icon: '_yibiaopan',
+          title: '空调分室计量'
+        },
+        component: () => import('@/view/update/update-table.vue')
+      },
+      {
+        path: 'update_paste_page',
+        name: '能源能耗',
+        meta: {
+          icon: '_jiedianguanli',
+          title: '能源能耗'
+        },
+        component: () => import('@/view/update/update-paste.vue')
+      },
+      {
+        path: 'update_paste_page',
+        name: '空调及通风',
+        meta: {
+          icon: '_songfeng',
+          title: '空调及通风'
+        },
+        component: () => import('@/view/update/update-paste.vue')
+      },
+      {
+        path: 'update_paste_page',
+        name: '给排水设备',
+        meta: {
+          icon: '_iconyongliangreshuiqi',
+          title: '给排水设备'
+        },
+        component: () => import('@/view/update/update-paste.vue')
+      },
+      {
+        path: 'update_paste_page',
+        name: '公共照明',
+        meta: {
+          icon: '_zhaoming',
+          title: '公共照明'
+        },
+        component: () => import('@/view/update/update-paste.vue')
+      }
+    ]
+  },
+  {
     path: '/tools_methods',
     name: '设备安全管理',
     meta: {
       icon: '_anquanjingbao',
       title: '设备安全管理',
-      hideInBread: false
+      hideInBread: false,
+      topMenuName: '6'
     },
     component: Main,
     children: [
@@ -371,7 +379,8 @@ export default [
     meta: {
       icon: '_anquan1',
       title: '信息安全管理',
-      hideInBread: false
+      hideInBread: false,
+      topMenuName: '7'
     },
     component: Main,
     children: [
