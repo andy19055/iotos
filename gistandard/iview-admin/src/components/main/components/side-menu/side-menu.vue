@@ -81,9 +81,12 @@ export default {
       return this.$route.matched.map(item => item.name).filter(item => item !== name)
     },
     updateOpenName (name) {
-//      alert(this.getOpenedNamesByActiveName(name))
       if (name === this.$config.homeName) this.openedNames = []
-      else this.openedNames = this.getOpenedNamesByActiveName(name)
+      else{
+        //修改了这里，实现每次topMenu点击展开的是选定主菜单对应的子菜单
+        //this.openedNames = this.getOpenedNamesByActiveName(name)
+        this.openedNames = [name]
+      }
     }
   },
   computed: {
