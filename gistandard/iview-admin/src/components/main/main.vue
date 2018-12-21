@@ -5,7 +5,7 @@
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
           <img v-show="!collapsed" :src="maxLogo" key="max-logo"/>
-          <Icon v-show="collapsed" type=" iconfont icon-iotos-logo" size="28" style="color: white;padding:1px;margin-top: 8px;border: 2px solid grey;border-radius: 10px;"/>
+          <Icon v-show="collapsed" type=" iconfont icon-iotos-logo" size="28" style="color: white;padding:1px;margin-top: 8px;border: 0px solid grey;border-radius: 10px;"/>
           <!--<img v-show="collapsed" :src="minLogo" key="min-logo" style="height: 100% !important"/>-->
         </div>
       </side-menu>
