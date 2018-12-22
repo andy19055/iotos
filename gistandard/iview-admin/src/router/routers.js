@@ -148,13 +148,43 @@ export default [
     component: Main,
     children: [
       {
-        path: 'count_to_page',
+        path: 'renting',
         name: '招商租赁',
         meta: {
           icon: '_hezuohuobanmiyueguanli',
           title: '招商租赁'
         },
-        component: () => import('@/view/components/count-to/count-to.vue')
+        component: () => import('@/view/renting/contract.vue'),
+        children: [
+          {
+            path: 'export-excel',
+            name: '商铺信息管理',
+            meta: {
+              icon: '_rili1',
+              title: '商铺信息管理'
+            },
+            component: () => import('@/view/excel/export-excel.vue')
+          },
+          {
+            path: 'export-excel',
+            name: '客户信息管理',
+            meta: {
+              icon: '_icon_bangzhuwendang',
+              title: '客户信息管理'
+            },
+            component: () => import('@/view/excel/export-excel.vue')
+          },
+          {
+            path: 'export-excel',
+            name: '意向合同管理',
+            meta: {
+              icon: '_kaoqin',
+              title: '意向合同管理'
+            },
+            component: () => import('@/view/excel/export-excel.vue')
+          }
+        ]
+
       },
       {
         path: 'drag_list_page',
