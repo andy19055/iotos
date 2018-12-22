@@ -9,19 +9,9 @@
           </template>
 
           <template slot-scope="{ row, index }" slot="class">
-            <Dropdown v-if="editIndex === index" placement="bottom-start">
-              <a href="javascript:void(0)">
-                {{ row.class }}
-                <Icon type="ios-arrow-down"></Icon>
-              </a>
-              <DropdownMenu slot="list" @>
-                <DropdownItem @click="editclass">主场馆</DropdownItem>
-                <DropdownItem>游泳馆</DropdownItem>
-                <DropdownItem>网球馆</DropdownItem>
-                <DropdownItem>报告厅</DropdownItem>
-                <DropdownItem>会议厅</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+            <Select v-if="editIndex === index" :value="row.class" @on-change="classChoose" style="width:200px" readonly>
+              <Option v-for="item in productClass" :value="item" :key="item">{{ item }}</Option>
+            </Select>
             <span v-else>{{ row.class }}</span>
           </template>
 
@@ -70,6 +60,13 @@
           {title: '租赁状态', slot: 'status'},
           {title: '操作', slot: 'action'}
         ],
+        productClass: [
+          '主场馆',
+          '会议室',
+          '报告厅',
+          '游泳馆',
+          '羽毛球馆'
+        ],
         data: [
           {
             name: 'SP-1002',
@@ -110,6 +107,10 @@
         this.editstation = row.station;
         this.editstatus = row.status;
         this.editIndex = index;
+      },
+      classChoose(classtext){
+          console.warn(classtext)
+          this.editclass = classtext
       },
       handleSave (index) {
         this.data[index].name = this.editname;
