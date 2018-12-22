@@ -1,215 +1,140 @@
 <template>
   <Card shadow>
-    <div>
-      <div class="message-page-con message-category-con">
-        <Menu ref="menu" width="auto" :active-name="activename" @on-select="handleSelect">
-          <template v-for="(value,key) in optionGroup">
-            <template v-if="sideMenuChoosed === key" v-for="item in value">
-              <MenuItem :name="`${key}-${item.name}`"><Icon :type="item.icon" size="20"/><span>{{item.text}}</span></MenuItem>
-            </template>
+    <div class="message-page-con">
+      <Card>
+        <!--跟iView的table不同的地方是绑定数据不是data，而是用v-model了-->
+        <tables :columns="columns" v-model="data">
+          <template slot-scope="{ row, index }" slot="name">
+            <Input type="text" v-model="editName" v-if="editIndex === index"/>
+            <span v-else>{{ row.name }}</span>
           </template>
-        </Menu>
-      </div>
-      <div class="message-page-con message-view-con">
-        <Spin fix v-if="contentLoading" size="large"></Spin>
-        <div class="message-view-header">
-          <h2 class="message-view-title">{{ showingMsgItem.title }}</h2>
-          <time class="message-view-time">{{ showingMsgItem.create_time }}</time>
-        </div>
-        <div v-html="messageContent"></div>
-      </div>
+
+          <template slot-scope="{ row, index }" slot="age">
+            <Input type="text" v-model="editAge" v-if="editIndex === index"/>
+            <span v-else>{{ row.age }}</span>
+          </template>
+
+          <template slot-scope="{ row, index }" slot="birthday">
+            <Input type="text" v-model="editBirthday" v-if="editIndex === index"/>
+            <span v-else>{{ getBirthday(row.birthday) }}</span>
+          </template>
+
+          <template slot-scope="{ row, index }" slot="address">
+            <Input type="text" v-model="editAddress" v-if="editIndex === index"/>
+            <span v-else>{{ row.address }}</span>
+          </template>
+
+          <template slot-scope="{ row, index }" slot="action">
+            <div v-if="editIndex === index">
+              <Button @click="handleSave(index)">保存</Button>
+              <Button @click="editIndex = -1">取消</Button>
+            </div>
+            <div v-else>
+              <Button @click="handleEdit(row, index)">操作</Button>
+            </div>
+          </template>
+        </tables>
+      </Card>
     </div>
   </Card>
 </template>
 
 <script>
+  import './contract.less'
   import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
-  const listDic = {
-    unread: 'messageUnreadList',
-    readed: 'messageReadedList',
-    trash: 'messageTrashList'
-  }
-export default {
-  name: 'message_page',
-  data () {
-    return {
-      listLoading: true,
-      contentLoading: false,
-      currentMessageType: 'unread',
-      messageContent: '',
-      showingMsgItem: {}
-    }
-  },
-  computed: {
-    ...mapState({
-      messageUnreadList: store => store.user.messageUnreadList,
-      messageReadedList: store => store.user.messageReadedList,
-      messageTrashList: store => store.user.messageTrashList,
-      messageList () {
-        return this[listDic[this.currentMessageType]]
-      },
+  import Tables from '_c/tables'
+  import { getTableData } from '@/api/data'
 
-      sideMenuChoosed: store => store.user.sideMenuChoosed,
-    }),
-
-    ...mapGetters([
-      'messageUnreadCount',
-      'messageReadedCount',
-      'messageTrashCount'
-    ]),
-
-    optionGroup () {
+  export default {
+    components: {
+      Tables
+    },
+    data () {
       return {
-        product: [
+        columns: [
+          {title: 'Name', key: 'name', sortable: true},       // 跟iView的table不同的地方还有列变量是绑定不是slot，而是用key了
+          {title: 'Email', key: 'age', editable: true},
+          {title: 'Create-Time', key: 'birthday'},
+          {title: 'Create-Time', key: 'address'},
           {
-            name: 'query',
-            icon: 'ios-search-outline',
-            text: '查询商铺信息'
-          },
-          {
-            name: 'add',
-            icon: 'ios-add-circle-outline',
-            text: '新增商铺信息'
+            title: 'Handle',
+            key: 'handle',
+            options: ['delete'],
+            button: [
+              (h, params, vm) => {
+                return h('Poptip', {
+                  props: {
+                    confirm: true,
+                    title: '你确定要删除吗?'
+                  },
+                  on: {
+                    'on-ok': () => {
+                      vm.$emit('on-delete', params)
+                      vm.$emit('input', params.tableData.filter((item, index) => index !== params.row.initRowIndex))
+                    }
+                  }
+                }, [
+                  h('Button', '自定义删除')
+                ])
+              }
+            ]
           }
         ],
-        custom: [
+        data: [
           {
-            name: 'query',
-            icon: 'ios-search-outline',
-            text: '查询客户信息'
+            name: '王小明',
+            age: 18,
+            birthday: '919526400000',
+            address: '北京市朝阳区芍药居'
           },
           {
-            name: 'add',
-            icon: 'ios-add-circle-outline',
-            text: '新增客户信息'
+            name: '张小刚',
+            age: 25,
+            birthday: '696096000000',
+            address: '北京市海淀区西二旗'
           },
+          {
+            name: '李小红',
+            age: 30,
+            birthday: '563472000000',
+            address: '上海市浦东新区世纪大道'
+          },
+          {
+            name: '周小伟',
+            age: 26,
+            birthday: '687024000000',
+            address: '深圳市南山区深南大道'
+          }
         ],
-        contract: [
-          {
-            name: 'query',
-            icon: 'ios-search-outline',
-            text: '查询合同信息'
-          },
-          {
-            name: 'add',
-            icon: 'ios-add-circle-outline',
-            text: '新增合同信息'
-          },
-        ]
+        editIndex: -1,  // 当前聚焦的输入框的行数
+        editName: '',  // 第一列输入框，当然聚焦的输入框的输入内容，与 data 分离避免重构的闪烁
+        editAge: '',  // 第二列输入框
+        editBirthday: '',  // 第三列输入框
+        editAddress: '',  // 第四列输入框
       }
     },
-
-    activename(){
-      var nametmp = ''
-      if (this.optionGroup[this.sideMenuChoosed])
-        nametmp = this.sideMenuChoosed + '-' + this.optionGroup[this.sideMenuChoosed][0].name
-      this.$nextTick(() => {
-        this.$refs.menu.updateOpened()
-        this.$refs.menu.updateActiveName()
-      })
-      return nametmp
-    },
-  },
-  methods: {
-    ...mapMutations([
-      //
-    ]),
-    ...mapActions([
-      'getContentByMsgId',
-      'getMessageList',
-      'hasRead',
-      'removeReaded',
-      'restoreTrash'
-    ]),
-    stopLoading (name) {
-      this[name] = false
-    },
-    handleSelect (name) {
-      this.currentMessageType = name
-    },
-    handleView (msg_id) {
-      this.contentLoading = true
-      this.getContentByMsgId({ msg_id }).then(content => {
-        this.messageContent = content
-        const item = this.messageList.find(item => item.msg_id === msg_id)
-        if (item) this.showingMsgItem = item
-        if (this.currentMessageType === 'unread') this.hasRead({ msg_id })
-        this.stopLoading('contentLoading')
-      }).catch(() => {
-        this.stopLoading('contentLoading')
-      })
-    },
-    removeMsg (item) {
-      item.loading = true
-      const msg_id = item.msg_id
-      if (this.currentMessageType === 'readed') this.removeReaded({ msg_id })
-      else this.restoreTrash({ msg_id })
+    methods: {
+      handleEdit (row, index) {
+        this.editName = row.name;
+        this.editAge = row.age;
+        this.editAddress = row.address;
+        this.editBirthday = row.birthday;
+        this.editIndex = index;
+      },
+      handleSave (index) {
+        this.data[index].name = this.editName;
+        this.data[index].age = this.editAge;
+        this.data[index].birthday = this.editBirthday;
+        this.data[index].address = this.editAddress;
+        this.editIndex = -1;
+      },
+      getBirthday (birthday) {
+        const date = new Date(parseInt(birthday));
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year}-${month}-${day}`;
+      }
     }
-  },
-
-  mounted () {
-    this.listLoading = true
-    // 请求获取消息列表
-    this.getMessageList().then(() => this.stopLoading('listLoading')).catch(() => this.stopLoading('listLoading'))
   }
-}
 </script>
-
-<style lang="less">
-.message-page{
-  &-con{
-    height: ~"calc(100vh - 176px)";
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    &.message-category-con{
-      border-right: 1px solid #e6e6e6;
-      width: 200px;
-    }
-    &.message-list-con{
-      border-right: 1px solid #e6e6e6;
-      width: 230px;
-    }
-    &.message-view-con{
-      position: absolute;
-      left: 446px;
-      top: 16px;
-      right: 16px;
-      bottom: 16px;
-      overflow: auto;
-      padding: 12px 20px 0;
-      .message-view-header{
-        margin-bottom: 20px;
-        .message-view-title{
-          display: inline-block;
-        }
-        .message-view-time{
-          margin-left: 20px;
-        }
-      }
-    }
-    .category-title{
-      display: inline-block;
-      width: 65px;
-    }
-    .gray-dadge{
-      background: gainsboro;
-    }
-    .not-unread-list{
-      .msg-title{
-        color: rgb(170, 169, 169);
-      }
-      .ivu-menu-item{
-        .ivu-btn.ivu-btn-text.ivu-btn-small.ivu-btn-icon-only{
-          display: none;
-        }
-        &:hover{
-          .ivu-btn.ivu-btn-text.ivu-btn-small.ivu-btn-icon-only{
-            display: inline-block;
-          }
-        }
-      }
-    }
-  }
-}
-</style>
