@@ -4,7 +4,7 @@
       <div class="message-page-con message-category-con">
         <Menu width="auto" active-name="unread" @on-select="handleSelect">
           <template v-for="(value,key) in optionGroup">
-            <template v-for="item in value">
+            <template v-if="sideMenuChoosed === key" v-for="item in value">
               <MenuItem :name="`${key}-${item.name}`"><Icon :type="item.icon" size="20"/><span>{{item.text}}</span></MenuItem>
             </template>
           </template>
@@ -39,6 +39,12 @@ export default {
       messageContent: '',
       showingMsgItem: {}
     }
+  },
+  props: {
+    sideMenuChoosed: {
+      type: String,
+      default: 'product'
+    },
   },
   computed: {
     ...mapState({

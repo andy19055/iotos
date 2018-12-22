@@ -158,28 +158,31 @@ export default [
         children: [
           {
             path: 'export-excel',
-            name: '商铺信息管理',
+            name: 'product',
             meta: {
               icon: '_rili1',
-              title: '商铺信息管理'
+              title: '商铺信息管理',
+              __titleIsFunction__: true   //当加了这句后，显示的文字就用title了，name可用作其他用途了
             },
             component: () => import('@/view/excel/export-excel.vue')
           },
           {
             path: 'export-excel',
-            name: '客户信息管理',
+            name: 'custom',
             meta: {
               icon: '_icon_bangzhuwendang',
-              title: '客户信息管理'
+              title: '客户信息管理',
+              __titleIsFunction__: true
             },
             component: () => import('@/view/excel/export-excel.vue')
           },
           {
             path: 'export-excel',
-            name: '意向合同管理',
+            name: 'contract',
             meta: {
               icon: '_kaoqin',
-              title: '意向合同管理'
+              title: '意向合同管理',
+              __titleIsFunction__: true
             },
             component: () => import('@/view/excel/export-excel.vue')
           }
