@@ -79,10 +79,6 @@ export default {
   },
   methods: {
     handleSelect (name) {
-      this.$Modal.info({
-        title: '111',
-        content: name
-      })
       this.$emit('on-select', name)
     },
     getOpenedNamesByActiveName (name) {

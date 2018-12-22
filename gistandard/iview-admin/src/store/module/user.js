@@ -23,7 +23,8 @@ export default {
     messageUnreadList: [],
     messageReadedList: [],
     messageTrashList: [],
-    messageContentStore: {}
+    messageContentStore: {},
+    sideMenuChoosed: 'home'
   },
   mutations: {
     setAvator (state, avatorPath) {

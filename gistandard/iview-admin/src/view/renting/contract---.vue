@@ -2,12 +2,42 @@
   <Card shadow>
     <div>
       <div class="message-page-con message-category-con">
-        <Menu ref="menu" width="auto" :active-name="activename" @on-select="handleSelect">
-          <template v-for="(value,key) in optionGroup">
-            <template v-if="sideMenuChoosed === key" v-for="item in value">
-              <MenuItem :name="`${key}-${item.name}`"><Icon :type="item.icon" size="20"/><span>{{item.text}}</span></MenuItem>
-            </template>
-          </template>
+        <Menu width="auto" active-name="unread" @on-select="handleSelect">
+          <MenuItem name="unread">
+            <span class="category-title">未读消息</span><Badge style="margin-left: 10px" :count="messageUnreadCount"></Badge>
+          </MenuItem>
+          <MenuItem name="readed">
+            <span class="category-title">已读消息</span><Badge style="margin-left: 10px" class-name="gray-dadge" :count="messageReadedCount"></Badge>
+          </MenuItem>
+          <MenuItem name="trash">
+            <span class="category-title">回收站</span><Badge style="margin-left: 10px" class-name="gray-dadge" :count="messageTrashCount"></Badge>
+          </MenuItem>
+        </Menu>
+      </div>
+      <div class="message-page-con message-list-con">
+        <Spin fix v-if="listLoading" size="large"></Spin>
+        <Menu
+          width="auto"
+          active-name=""
+          :class="titleClass"
+          @on-select="handleView"
+        >
+          <MenuItem v-for="item in messageList" :name="item.msg_id" :key="`msg_${item.msg_id}`">
+            <div>
+              <p class="msg-title">{{ item.title }}</p>
+              <Badge status="default" :text="item.create_time" />
+              <Button
+                style="float: right;margin-right: 20px;"
+                :style="{ display: item.loading ? 'inline-block !important' : '' }"
+                :loading="item.loading"
+                size="small"
+                :icon="currentMessageType === 'readed' ? 'md-trash' : 'md-redo'"
+                :title="currentMessageType === 'readed' ? '删除' : '还原'"
+                type="text"
+                v-show="currentMessageType !== 'unread'"
+                @click.native.stop="removeMsg(item)"></Button>
+            </div>
+          </MenuItem>
         </Menu>
       </div>
       <div class="message-page-con message-view-con">
@@ -23,12 +53,12 @@
 </template>
 
 <script>
-  import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
-  const listDic = {
-    unread: 'messageUnreadList',
-    readed: 'messageReadedList',
-    trash: 'messageTrashList'
-  }
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
+const listDic = {
+  unread: 'messageUnreadList',
+  readed: 'messageReadedList',
+  trash: 'messageTrashList'
+}
 export default {
   name: 'message_page',
   data () {
@@ -42,73 +72,23 @@ export default {
   },
   computed: {
     ...mapState({
-      messageUnreadList: store => store.user.messageUnreadList,
-      messageReadedList: store => store.user.messageReadedList,
-      messageTrashList: store => store.user.messageTrashList,
+      messageUnreadList: state => state.user.messageUnreadList,
+      messageReadedList: state => state.user.messageReadedList,
+      messageTrashList: state => state.user.messageTrashList,
       messageList () {
         return this[listDic[this.currentMessageType]]
       },
-
-      sideMenuChoosed: store => store.user.sideMenuChoosed,
+      titleClass () {
+        return {
+          'not-unread-list': this.currentMessageType !== 'unread'
+        }
+      }
     }),
-
     ...mapGetters([
       'messageUnreadCount',
       'messageReadedCount',
       'messageTrashCount'
-    ]),
-
-    optionGroup () {
-      return {
-        product: [
-          {
-            name: 'query',
-            icon: 'ios-search-outline',
-            text: '查询商铺信息'
-          },
-          {
-            name: 'add',
-            icon: 'ios-add-circle-outline',
-            text: '新增商铺信息'
-          }
-        ],
-        custom: [
-          {
-            name: 'query',
-            icon: 'ios-search-outline',
-            text: '查询客户信息'
-          },
-          {
-            name: 'add',
-            icon: 'ios-add-circle-outline',
-            text: '新增客户信息'
-          },
-        ],
-        contract: [
-          {
-            name: 'query',
-            icon: 'ios-search-outline',
-            text: '查询合同信息'
-          },
-          {
-            name: 'add',
-            icon: 'ios-add-circle-outline',
-            text: '新增合同信息'
-          },
-        ]
-      }
-    },
-
-    activename(){
-      var nametmp = ''
-      if (this.optionGroup[this.sideMenuChoosed])
-        nametmp = this.sideMenuChoosed + '-' + this.optionGroup[this.sideMenuChoosed][0].name
-      this.$nextTick(() => {
-        this.$refs.menu.updateOpened()
-        this.$refs.menu.updateActiveName()
-      })
-      return nametmp
-    },
+    ])
   },
   methods: {
     ...mapMutations([
@@ -146,7 +126,6 @@ export default {
       else this.restoreTrash({ msg_id })
     }
   },
-
   mounted () {
     this.listLoading = true
     // 请求获取消息列表

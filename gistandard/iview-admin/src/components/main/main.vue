@@ -127,21 +127,22 @@ export default {
     ]),
     turnToPage (route) {
       let { name, params, query } = {};
-      if (typeof route === 'string') name = route;
+      if (typeof route === 'string') name = route;      //传过来的可以是json对象，也可以是字符串
       else {
         name = route.name;
         params = route.params;
         query = route.query;
       }
-      if (name.indexOf('isTurnByHref_') > -1) {
+      if (name.indexOf('isTurnByHref_') > -1) {         //如果是外部href连接，就新窗口跳转打开
         window.open(name.split('_')[1]);
         return;
       }
-      this.$router.push({
+      this.$router.push({                               //本地路由打开新标签
         name,
         params,
         query
       });
+      this.$store.state.user.sideMenuChoosed = name      //当前点击的是哪个菜单，信息传递给新标签的content页面
     },
     handleCollapsedChange (state) {
       this.collapsed = state;
