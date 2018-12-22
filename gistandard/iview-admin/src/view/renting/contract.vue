@@ -1,8 +1,9 @@
 <template>
   <Card shadow>
-    <div class="message-page-con">
+    <div class="product-page-con">
       <Card>
-        <Table :columns="columns" :data="data">
+        <Button style="margin: 10px 0;" type="default" @click="exportExcel"><Icon type="ios-download-outline" style="margin-right: 5px" size="20"></Icon>导出为Csv文件</Button>
+        <Table ref="table" :columns="columns" :data="data" footer>
           <template slot-scope="{ row, index }" slot="name">
             <Input type="text" v-model="editname" v-if="editIndex === index"/>
             <span v-else>{{ row.name }}</span>
@@ -29,8 +30,10 @@
 
           <template slot-scope="{ row, index }" slot="action">
             <div v-if="editIndex === index">
-              <Button @click="handleSave(index)">保存</Button>
-              <Button @click="editIndex = -1">取消</Button>
+              <Button class="option" @click="handleSave(index)">保存</Button>
+              <Button class="option" @click="editIndex = -1">复制</Button>
+              <Button class="option" @click="editIndex = -1">删除</Button>
+              <Button class="option" @click="editIndex = -1">取消</Button>
             </div>
             <div v-else>
               <Button @click="handleEdit(row, index)">操作</Button>
@@ -118,6 +121,11 @@
         this.data[index].station = this.editstation;
         this.data[index].status = this.editstatus;
         this.editIndex = -1;
+      },
+      exportExcel () {
+        this.$refs.table.exportCsv({
+          filename: `table-${(new Date()).valueOf()}.csv`
+        })
       }
     }
   }
