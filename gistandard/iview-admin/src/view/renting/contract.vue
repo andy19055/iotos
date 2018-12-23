@@ -2,7 +2,7 @@
   <Card shadow>
     <div class="product-page-con">
       <Card>
-        <Button style="margin: 10px 0;" type="default" @click="exportExcel"><Icon type="ios-download-outline" style="margin-right: 5px" size="20"></Icon>导出为Csv文件</Button>
+        <Button style="margin-bottom: 10px;" type="default" @click="exportExcel"><Icon type="ios-download-outline" style="margin-right: 5px" size="20"></Icon>导出为Csv文件</Button>
         <Table
           border
           :data="filters"
@@ -215,10 +215,19 @@
       },
       loadData() {
         //模拟数据库查询数据
-        this.data = data
-        //这个search应该是传到后台,然后台来根据条件查询数据库；
+        this.data = data.filter(item => {
+          var rettmp = true
+          if(this.search.name && item.name.toUpperCase().indexOf(this.search.name.toUpperCase()) == -1
+            || this.search.class && item.class.toUpperCase().indexOf(this.search.class.toUpperCase()) == -1
+            || this.search.station && item.station.toUpperCase().indexOf(this.search.station.toUpperCase()) == -1
+            || this.search.status && item.status.toUpperCase().indexOf(this.search.status.toUpperCase()) == -1
+          )
+            rettmp = false
+          return rettmp
+        })
         //by lrq,一方面可以做查询到的结果或初始列表中做本地实时过滤，另一方面，在服务器数据量很大时，初始查询页面没有内容或默认最新多少条内容，然后自己根据条件去服务器查，条件设置好后去获取
-        console.log('查询条件', JSON.stringify(this.search,undefined,2))
+        console.log('过滤查看条件', JSON.stringify(this.search,undefined,2))
+
 //        查询条件
 //        {
 //          'name'
@@ -337,7 +346,14 @@
                 },
                 on: {
                   'on-click': () => {
-                    //查询按钮点击，从服务器去查，待实现：
+                    //查询按钮点击，从服务器去查，待实现，这个search应该是传到后台,然后台来根据条件查询数据库；
+                    //----------------------------------------------------------------------------
+
+
+                    //【TODO】
+
+
+                    //----------------------------------------------------------------------------
                   }
                 }
               })
