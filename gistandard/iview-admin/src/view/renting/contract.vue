@@ -65,7 +65,7 @@
 
   const datatatus = {
     0: {
-      value: 0,
+      value: '',
       name: '全部'
     },
     1: {
