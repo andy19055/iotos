@@ -164,7 +164,7 @@ export default [
               title: '商铺信息管理',
               __titleIsFunction__: true   //当加了这句后，显示的文字就用title了，name可用作其他用途了
             },
-            component: () => import('@/view/excel/export-excel.vue')
+            component: () => import('@/view/renting/product.vue')
           },
           {
             path: 'export-excel',

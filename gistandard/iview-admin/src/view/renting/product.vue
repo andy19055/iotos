@@ -105,6 +105,45 @@ export default {
             }
           },                     //加上editable: true，启用单个格子支持编辑
           {
+            title: '测试',
+            slot: 'test',
+            filter: {
+              type: 'Select',
+              option: {
+                0: {
+                  value: '',
+                  name: '全部'
+                },
+                1: {
+                  value: '开心',
+                  name: '开心'
+                },
+                2: {
+                  value: '奇怪',
+                  name: '奇怪'
+                },
+                3: {
+                  value: '聊天',
+                  name: '聊天'
+                }
+              }
+            }
+          },
+          {
+            title: '具体位置',
+            slot: 'station',
+            filter: {
+              type: 'Input'
+            }
+          },
+          {
+            title: '商铺详情',
+            slot: 'details',
+            filter: {
+              type: 'Input'
+            }
+          },
+          {
             title: '租赁状态',
             slot: 'status',
             filter: {
