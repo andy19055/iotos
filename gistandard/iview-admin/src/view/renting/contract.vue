@@ -111,13 +111,6 @@ export default {
               type: 'Input'
             }
           },
-          {
-            title: '签订人',
-            slot: 'person',
-            filter: {
-              type: 'Input'
-            }
-          }
         ],
         tableData: datasource
     }
