@@ -1,157 +1,112 @@
 <template>
   <div>
-      <ioTable :columnFileds="columns" :datasource="tableData"></ioTable>
+    <ioTable :columnFileds="columns" :datasource="tableData"></ioTable>
   </div>
 </template>
 
 <script>
-import { getTableData } from '@/api/data'
-import ioTable from './iotable.vue'
+import { getTableData } from "@/api/data";
+import ioTable from "./iotable.vue";
 
 const datasource = [
   {
-    name: 'SP-1002',
-    class: '主场馆',
-    station: '北门一楼1002',
-    details: '1212',
-    status: '待租',
-    test: '开心',
-    person: '李儒强'
+    name: "李光耀",
+    phone: "13423987810",
+    company: "爱投斯智能",
+    time: "2019年01月01日",
+    receiver: "张秀荣",
+    comment: "客户初访，洽谈体育馆租赁举办一场大型企业年会，费用问题暂无结果"
   },
   {
-    name: 'SP-1002',
-    class: '会议室',
-    station: '北门一楼1002',
-    details: '23213',
-    status: '待租',
-    test: '开心',
-    person: '李天宝'
+    name: "李光耀",
+    phone: "13423987810",
+    company: "爱投斯智能",
+    time: "2019年01月07日",
+    receiver: "张秀荣",
+    comment: "合同签订"
   },
   {
-    name: 'SP-1002',
-    class: '报告厅',
-    station: '北门一楼1002',
-    details: 'asdga',
-    status: '待租',
-    test: '奇怪',
-    person: '李儒强'
-  },
-  {
-    name: 'SP-1002',
-    class: '游泳馆',
-    station: '北门一楼1002',
-    details: 'daewwe',
-    status: '待租',
-    test: '聊天',
-    person: '张秀荣'
-  },
-]
+    name: "李凯",
+    phone: "13423987810",
+    company: "海尔集团",
+    time: "2019年01月08日",
+    receiver: "张秀荣",
+    comment: "客户初访，场地考察"
+  }
+];
 
 export default {
-  name: 'page_renting_customer',
+  name: "page_renting_customer",
   components: {
     ioTable
   },
-  data () {
+  data() {
     return {
-        columns: [
-          {
-            title: '姓名',
-            slot: 'name',
-            sortable: true,
-            filter: {
-              type: 'Input'
-            }
-          },       // 跟iView的table不同的地方还有列变量是绑定不是slot，而是用key了
-          {
-            title: '性别',
-            slot: 'phone',
-            filter: {
-              type: 'Select',
-              option: {
-                0: {
-                  value: '',
-                  name: '全部'
-                },
-                1: {
-                  value: '男',
-                  name: '男'
-                },
-                2: {
-                  value: '女',
-                  name: '女'
-                }
-              }
-            }
-          },                     //加上editable: true，启用单个格子支持编辑
-          {
-            title: '电话',
-            slot: 'phone',
-            filter: {
-              type: 'Input'
-            }
-          },
-          {
-            title: '单位名称',
-            slot: 'company',
-            filter: {
-              type: 'Input'
-            }
-          },
-          {
-            title: '登记日期',
-            slot: 'time',
-            filter: {
-              type: 'Input'
-            }
-          },
-          {
-            title: '性别',
-            slot: 'phone',
-            filter: {
-              type: 'Select',
-              option: {
-                0: {
-                  value: '',
-                  name: '全部'
-                },
-                1: {
-                  value: '男',
-                  name: '男'
-                },
-                2: {
-                  value: '女',
-                  name: '女'
-                }
-              }
-            }
-          },
-          {
-            title: '签订人',
-            slot: 'person',
-            filter: {
-              type: 'Input'
+      columns: [
+        {
+          title: "客户姓名",
+          slot: "name",
+          sortable: true,
+          filter: {
+            type: "Input"
+          }
+        }, // 跟iView的table不同的地方还有列变量是绑定不是slot，而是用key了                 //加上editable: true，启用单个格子支持编辑
+        {
+          title: "电话",
+          slot: "phone",
+          filter: {
+            type: "Input"
+          }
+        },
+        {
+          title: "单位名称",
+          slot: "company",
+          filter: {
+            type: "Input"
+          }
+        },
+        {
+          title: "来访日期",
+          slot: "time",
+          filter: {
+            type: "DatePicker"
+          }
+        },
+        {
+          title: "接待人",
+          slot: "receiver",
+          filter: {
+            type: "Input"
+          }
+        },
+        {
+          title: "跟踪纪要",
+          slot: "comment",
+          filter: {
+            type: "Input",
+            option: {
+              type: "textarea"
             }
           }
-        ],
-        tableData: datasource
-    }
+        }
+      ],
+      tableData: datasource
+    };
   },
   methods: {
-    exportExcel () {
+    exportExcel() {
       this.$refs.tables.exportCsv({
-        filename: `table-${(new Date()).valueOf()}.csv`
-      })
+        filename: `table-${new Date().valueOf()}.csv`
+      });
     }
   },
-  mounted () {
+  mounted() {
     getTableData().then(res => {
-//      this.tableData = res.data
-    })
+      //      this.tableData = res.data
+    });
   }
-}
+};
 </script>
 
 <style>
-
 </style>

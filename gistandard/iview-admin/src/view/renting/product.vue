@@ -8,6 +8,7 @@
 import { getTableData } from '@/api/data'
 import ioTable from './iotable.vue'
 
+//数据字段多了少了都不影响，大不了用户上，或者没显示！这点数据和视图兼容很好！
 const datasource = [
   {
     name: 'SP-1002',
@@ -56,7 +57,7 @@ export default {
     return {
         columns: [
           {
-            title: '名称编号',
+            title: '商铺编号',
             slot: 'name',
             sortable: true,
             filter: {
@@ -105,40 +106,8 @@ export default {
             }
           },                     //加上editable: true，启用单个格子支持编辑
           {
-            title: '测试',
-            slot: 'test',
-            filter: {
-              type: 'Select',
-              option: {
-                0: {
-                  value: '',
-                  name: '全部'
-                },
-                1: {
-                  value: '开心',
-                  name: '开心'
-                },
-                2: {
-                  value: '奇怪',
-                  name: '奇怪'
-                },
-                3: {
-                  value: '聊天',
-                  name: '聊天'
-                }
-              }
-            }
-          },
-          {
             title: '具体位置',
             slot: 'station',
-            filter: {
-              type: 'Input'
-            }
-          },
-          {
-            title: '商铺详情',
-            slot: 'details',
             filter: {
               type: 'Input'
             }
@@ -150,13 +119,6 @@ export default {
               type: 'Input'
             }
           },
-          {
-            title: '签订人',
-            slot: 'person',
-            filter: {
-              type: 'Input'
-            }
-          }
         ],
         tableData: datasource
     }
