@@ -26,7 +26,7 @@
             </template>
 
             <template slot-scope="{ row, index }" slot="action">
-              <ButtonGroup v-if="editIndex === index" size="default">
+              <ButtonGroup v-if="editIndex === index" size="default" shape="circle" type="primary">
                 <Button class="option" @click="handleSave(index)">保存</Button>
                 <Button class="option" @click="editIndex = -1">克隆</Button>
                 <Button class="option" @click="editIndex = -1" type="warning">删除</Button>
@@ -43,7 +43,6 @@
   </Card>
 </template>
 <script>
-  import './contract.less'
   import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
   import Tables from '_c/tables'
   import FilterTable from '_c/table-filter'
@@ -93,7 +92,8 @@
               icon: 'ios-create-outline'
             },
             options: ['delete'],
-            minWidth: 50
+            minWidth: 50,
+            maxWidth: 300
           }
         ]
       }
@@ -204,6 +204,9 @@
         if (this.columns[index].minWidth) {
           this.$set(filter, 'minWidth', this.columns[index].minWidth);
         }
+        if (this.columns[index].maxWidth) {
+          this.$set(filter, 'maxWidth', this.columns[index].maxWidth);
+        }
 
         let render = (h) => {
         };
@@ -299,6 +302,13 @@
   }
 </script>
 
+<style lang="less">
+.product-page{
+  &-con{
+    height: ~"calc(100vh - 235px)";
+  }
+}
+</style>
 
 
 

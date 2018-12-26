@@ -48,7 +48,7 @@ const datasource = [
 ]
 
 export default {
-  name: 'page_renting_product',
+  name: 'page_renting_customer',
   components: {
     ioTable
   },
@@ -56,7 +56,7 @@ export default {
     return {
         columns: [
           {
-            title: '名称编号',
+            title: '姓名',
             slot: 'name',
             sortable: true,
             filter: {
@@ -64,8 +64,8 @@ export default {
             }
           },       // 跟iView的table不同的地方还有列变量是绑定不是slot，而是用key了
           {
-            title: '租赁类别',
-            slot: 'class',
+            title: '性别',
+            slot: 'phone',
             filter: {
               type: 'Select',
               option: {
@@ -74,39 +74,40 @@ export default {
                   name: '全部'
                 },
                 1: {
-                  value: '主场馆',
-                  name: '主场馆'
+                  value: '男',
+                  name: '男'
                 },
                 2: {
-                  value: '会议室',
-                  name: '会议室'
-                },
-                3: {
-                  value: '游泳馆',
-                  name: '游泳馆'
-                },
-                4: {
-                  value: '报告厅',
-                  name: '报告厅'
-                },
-                5: {
-                  value: '展厅',
-                  name: '展厅'
-                },
-                6: {
-                  value: '篮球馆',
-                  name: '篮球馆'
-                },
-                7: {
-                  value: '广告屏',
-                  name: '广告屏'
+                  value: '女',
+                  name: '女'
                 }
               }
             }
           },                     //加上editable: true，启用单个格子支持编辑
           {
-            title: '测试',
-            slot: 'test',
+            title: '电话',
+            slot: 'phone',
+            filter: {
+              type: 'Input'
+            }
+          },
+          {
+            title: '单位名称',
+            slot: 'company',
+            filter: {
+              type: 'Input'
+            }
+          },
+          {
+            title: '登记日期',
+            slot: 'time',
+            filter: {
+              type: 'Input'
+            }
+          },
+          {
+            title: '性别',
+            slot: 'phone',
             filter: {
               type: 'Select',
               option: {
@@ -115,39 +116,14 @@ export default {
                   name: '全部'
                 },
                 1: {
-                  value: '开心',
-                  name: '开心'
+                  value: '男',
+                  name: '男'
                 },
                 2: {
-                  value: '奇怪',
-                  name: '奇怪'
-                },
-                3: {
-                  value: '聊天',
-                  name: '聊天'
+                  value: '女',
+                  name: '女'
                 }
               }
-            }
-          },
-          {
-            title: '具体位置',
-            slot: 'station',
-            filter: {
-              type: 'Input'
-            }
-          },
-          {
-            title: '商铺详情',
-            slot: 'details',
-            filter: {
-              type: 'Input'
-            }
-          },
-          {
-            title: '租赁状态',
-            slot: 'status',
-            filter: {
-              type: 'Input'
             }
           },
           {

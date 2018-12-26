@@ -139,7 +139,7 @@ export default [
     ]
   },
   {
-    path: '/components',
+    path: '/property',
     name: '物业管理',
     meta: {
       icon: '_gaoceng',
@@ -148,16 +148,18 @@ export default [
     component: Main,
     children: [
       {
-        path: 'renting',
+        path: 'renting/',
         name: '招商租赁',
         meta: {
           icon: '_hezuohuobanmiyueguanli',
-          title: '招商租赁'
+          title: '招商租赁',
+          // access: ['super_admin'],
+          // showAlways: true,
         },
-        component: () => import('@/view/renting/contract.vue'),
+        component: parentView,
         children: [
           {
-            path: 'export-excel',
+            path: 'product',
             name: 'product',
             meta: {
               icon: '_rili1',
@@ -167,27 +169,26 @@ export default [
             component: () => import('@/view/renting/product.vue')
           },
           {
-            path: 'export-excel',
-            name: 'custom',
+            path: 'customer',
+            name: 'customer',
             meta: {
               icon: '_icon_bangzhuwendang',
               title: '客户信息管理',
               __titleIsFunction__: true
             },
-            component: () => import('@/view/excel/export-excel.vue')
+            component: () => import('@/view/renting/customer.vue')
           },
           {
-            path: 'export-excel',
+            path: 'contract',
             name: 'contract',
             meta: {
               icon: '_kaoqin',
               title: '意向合同管理',
               __titleIsFunction__: true
             },
-            component: () => import('@/view/excel/export-excel.vue')
+            component: () => import('@/view/renting/contract.vue')
           }
         ]
-
       },
       {
         path: 'drag_list_page',

@@ -48,7 +48,7 @@ const datasource = [
 ]
 
 export default {
-  name: 'tables_page',
+  name: 'page_renting_contract',
   components: {
     ioTable
   },
