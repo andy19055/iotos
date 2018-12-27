@@ -17,7 +17,8 @@ const datasource = [
     amount: 58,
     customer: "李正",
     receiver: "李儒强",
-    files: "天河合同-2019"
+    files: "天河合同-2019",
+    receipt: "已开票"
   },
   {
     name: "2019-002",
@@ -27,7 +28,8 @@ const datasource = [
     amount: 10,
     customer: "李正",
     receiver: "李儒强",
-    files: "万达合同-2018"
+    files: "万达合同-2018",
+    receipt: "已开票"
   },
   {
     name: "2019-003",
@@ -37,7 +39,8 @@ const datasource = [
     amount: 23,
     customer: "李正",
     receiver: "李儒强",
-    files: "体育合同-2018"
+    files: "体育合同-2018",
+    receipt: "未开票"
   },
   {
     name: "2019-004",
@@ -47,7 +50,8 @@ const datasource = [
     amount: 46,
     customer: "李正",
     receiver: "李儒强",
-    files: "军运会合同-2019"
+    files: "军运会合同-2019",
+    receipt: "未开票"
   }
 ];
 
@@ -121,6 +125,27 @@ export default {
           slot: "receiver",
           filter: {
             type: "Input"
+          }
+        },
+        {
+          title: "开票状态",
+          slot: "receipt",
+          filter: {
+            type: "Select",
+            option: {
+              0: {
+                value: "",
+                name: "全部"
+              },
+              1: {
+                value: "已开票",
+                name: "已开票"
+              },
+              2: {
+                value: "未开票",
+                name: "未开票"
+              }
+            }
           }
         },
         {
