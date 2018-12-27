@@ -60,11 +60,11 @@
               v-else-if="editIndex === index && colItem.filter.type === 'Upload'"
               action="//jsonplaceholder.typicode.com/posts/"
               :name="editData[colItem.slot]"
-              @on-success="editData[colItem.slot]=$event"
+              :on-success="(res,file)=> handleSuccess(editData[colItem.slot], res,file)"
             >
               <ButtonGroup size="small" shape="circle" type="primary">
                 <Button icon="ios-cloud-upload-outline" style="margin-top:8px;">上传</Button>
-                <Button icon="ios-cloud-upload-outline" style="margin-top:8px;">上传</Button>
+                <!-- <Button icon="ios-cloud-download-outline" style="margin-top:8px;">下载</Button> -->
               </ButtonGroup>
             </Upload>
             <span v-else>{{ row[colItem.slot] }}</span>
@@ -158,12 +158,8 @@ export default {
       //console.error(JSON.stringify(this.editData,undefined,2))
       this.editIndex = index;
     },
-    datePicked(fieldtext, valuetext) {
-      alert(fieldtext + " " + valuetext);
-    },
-    fileUploaded(index, filename) {
-      // this.editData[key] = row[key];
-      alert(filename);
+    handleSuccess(oldfilename, res, file) {
+      this.editData["files"] = file.name;
     },
     optionselected(classtext) {
       this.classText = classtext;
@@ -352,14 +348,21 @@ export default {
           this.columns[index].filter.type === "Upload"
         ) {
           render = h => {
+            let inputValue = {};
             return h("Input", {
               props: {
                 placeholder: "输入" + this.columns[index].title,
                 icon: "ios-search"
               },
               on: {
-                "on-change": val => {
-                  this.validInputValue(index, val);
+                input: val => {
+                  inputValue = val;
+                  if (!inputValue) {
+                    this.validInputValue(index, inputValue);
+                  }
+                },
+                "on-change": () => {
+                  this.validInputValue(index, inputValue);
                 }
               }
             });
