@@ -15,7 +15,6 @@
         <Table
           ref="table"
           :columns="columns"
-          :search="search"
           :show-header="showHeader"
           :data="data"
           @on-delete="handleDelete"
@@ -52,16 +51,27 @@
             />
             <DatePicker
               v-else-if="editIndex === index && colItem.filter.type === 'DatePicker'"
-              type="datetime"
-              format="yyyy-MM-dd"
+              type="date"
+              format="yyyy年MM月dd日"
               :value="editData[colItem.slot]"
               @on-change="editData[colItem.slot]=$event"
             />
+            <Upload
+              v-else-if="editIndex === index && colItem.filter.type === 'Upload'"
+              action="//jsonplaceholder.typicode.com/posts/"
+              :name="editData[colItem.slot]"
+              @on-success="editData[colItem.slot]=$event"
+            >
+              <ButtonGroup size="small" shape="circle" type="primary">
+                <Button icon="ios-cloud-upload-outline" style="margin-top:8px;">上传</Button>
+                <Button icon="ios-cloud-upload-outline" style="margin-top:8px;">上传</Button>
+              </ButtonGroup>
+            </Upload>
             <span v-else>{{ row[colItem.slot] }}</span>
           </template>
 
           <template slot-scope="{ row, index }" slot="action">
-            <ButtonGroup v-if="editIndex === index" size="default" shape="circle" type="primary">
+            <ButtonGroup v-if="editIndex === index" size="small" shape="circle" type="primary">
               <Button class="option" @click="handleSave(index)">保存</Button>
               <Button class="option" @click="editIndex = -1">克隆</Button>
               <Button class="option" @click="editIndex = -1" type="warning">删除</Button>
@@ -151,6 +161,10 @@ export default {
     datePicked(fieldtext, valuetext) {
       alert(fieldtext + " " + valuetext);
     },
+    fileUploaded(index, filename) {
+      // this.editData[key] = row[key];
+      alert(filename);
+    },
     optionselected(classtext) {
       this.classText = classtext;
     },
@@ -158,7 +172,7 @@ export default {
       this.editData[this.classText] = classvalue;
     },
     handleSave(index) {
-      console.error(JSON.stringify(this.editData, undefined, 2));
+      // console.error(JSON.stringify(this.editData, undefined, 2));
       for (var key in this.editData) this.data[index][key] = this.editData[key];
       this.editIndex = -1;
     },
@@ -186,8 +200,9 @@ export default {
           for (var key in this.datasource[0]) {
             sumtmp +=
               Boolean(this.search[key]) &&
-              item[key].toUpperCase().indexOf(this.search[key].toUpperCase()) ==
-                -1;
+              String(item[key])
+                .toUpperCase()
+                .indexOf(String(this.search[key]).toUpperCase()) == -1;
           }
           rettmp = sumtmp === 0 ? true : false;
         }
@@ -310,6 +325,41 @@ export default {
                   //----------------------------------------------------------------------------
                   //【TODO】
                   //----------------------------------------------------------------------------
+                }
+              }
+            });
+          };
+        } else if (
+          this.columns[index].filter.type &&
+          this.columns[index].filter.type === "DatePicker"
+        ) {
+          render = h => {
+            return h(this.columns[index].filter.type, {
+              props: {
+                placeholder: "输入" + this.columns[index].title,
+                type: "date",
+                format: "yyyy年MM月dd日"
+              },
+              on: {
+                "on-change": val => {
+                  this.validInputValue(index, val);
+                }
+              }
+            });
+          };
+        } else if (
+          this.columns[index].filter.type &&
+          this.columns[index].filter.type === "Upload"
+        ) {
+          render = h => {
+            return h("Input", {
+              props: {
+                placeholder: "输入" + this.columns[index].title,
+                icon: "ios-search"
+              },
+              on: {
+                "on-change": val => {
+                  this.validInputValue(index, val);
                 }
               }
             });

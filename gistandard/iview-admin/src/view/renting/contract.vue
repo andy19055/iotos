@@ -12,42 +12,42 @@ const datasource = [
   {
     name: "2019-001",
     status: "已签订",
-    begin: "2019-01-01",
-    end: "2019-02-01",
-    begin: "2019-01-01",
-    amount: "58",
+    begin: "2019年01月01日",
+    end: "2019年02月01日",
+    amount: 58,
     customer: "李正",
-    receiver: "李儒强"
+    receiver: "李儒强",
+    files: "天河合同-2019"
   },
   {
     name: "2019-002",
     status: "意向签订",
-    begin: "2019-01-01",
-    end: "2019-02-01",
-    begin: "2019-01-01",
+    begin: "2019年01月01日",
+    end: "2019年02月01日",
     amount: 10,
     customer: "李正",
-    receiver: "李儒强"
+    receiver: "李儒强",
+    files: "万达合同-2018"
   },
   {
     name: "2019-003",
     status: "已签订",
-    begin: "2019-02-01",
-    end: "2019-02-01",
-    begin: "2019-03-01",
+    begin: "2019年02月01日",
+    end: "2019年02月01日",
     amount: 23,
     customer: "李正",
-    receiver: "李儒强"
+    receiver: "李儒强",
+    files: "体育合同-2018"
   },
   {
     name: "2019-004",
     status: "已签订",
-    begin: "2019-01-01",
-    end: "2019-02-01",
-    begin: "2019-01-01",
+    begin: "2019年01月01日",
+    end: "2019年02月01日",
     amount: 46,
     customer: "李正",
-    receiver: "李儒强"
+    receiver: "李儒强",
+    files: "军运会合同-2019"
   }
 ];
 
@@ -103,7 +103,7 @@ export default {
           }
         },
         {
-          title: "合同金额",
+          title: "合同金额(万)",
           slot: "amount",
           filter: {
             type: "InputNumber"
@@ -121,6 +121,13 @@ export default {
           slot: "receiver",
           filter: {
             type: "Input"
+          }
+        },
+        {
+          title: "合同附件",
+          slot: "files",
+          filter: {
+            type: "Upload"
           }
         }
       ],
