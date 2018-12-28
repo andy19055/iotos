@@ -1,12 +1,16 @@
 <template>
   <div>
-    <button class="btn" @click="status(true)" style="width:200px;height:100px;"></button>
-    <io-vodal class="wrap" :show="show" :duration="duration" @on-status="status"></io-vodal>
+    <button @click="show = true" style="width:200px;height:100px;"></button>
+    <io-vodal class="wrap" :show="show" :duration="duration" @on-status="status">
+      <span slot="head">测试DEMO</span>
+      <input type="textarea" slot="body" value="哈哈哈哈哈">
+    </io-vodal>
   </div>
 </template>
 
 <script>
 import ioVodal from "_c/iovodal/iovodal.vue";
+import DragList from "_c/drag-list";
 
 export default {
   name: "app",
