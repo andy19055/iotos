@@ -6,7 +6,7 @@
 
 <script>
 import { getTableData } from "@/api/data";
-import ioTable from "./iotable.vue";
+import ioTable from "_c/iotable/iotable.vue";
 
 const datasource = [
   {
