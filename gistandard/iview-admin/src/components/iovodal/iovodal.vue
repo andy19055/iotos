@@ -1,34 +1,20 @@
 <template>
   <div class="wrap">
-    <div class="container" :style="paddingTop">
-      <h1 class="title scale">Vodal</h1>
-      <h3 class="intro scale">A vue modal with animations.</h3>
-      <div class="btn-area">
-        <button
-          class="btn scale"
-          v-text="item"
-          v-bind:key="index"
-          v-for="(item, index) in types"
-          :style="delay(index)"
-          @click="onShow(item)"
-        />
-      </div>
-      <vodal
-        measure="em"
-        :show="show"
-        :animation="animation"
-        :width="28.5"
-        :height="17"
-        :duration="301"
-        class="my-dialog"
-        @hide="show = false"
-      >
-        <div class="header">Vodal</div>
-        <div class="body">A vue modal with animations.</div>
-        <button class="vodal-confirm-btn" @click="show = false">ok</button>
-        <button class="vodal-cancel-btn" @click="show = false">close</button>
-      </vodal>
-    </div>
+    <vodal
+      measure="em"
+      :show="status"
+      :animation="animation"
+      :width="28.5"
+      :height="17"
+      :duration="duration"
+      class="my-dialog"
+      @hide="showDialog(false)"
+    >
+      <div class="header">Vodal</div>
+      <div class="body">A vue modal with animations.</div>
+      <button class="vodal-confirm-btn" @click="showDialog(false)">确定</button>
+      <button class="vodal-cancel-btn" @click="showDialog(false)">取消</button>
+    </vodal>
   </div>
 </template>
 
@@ -38,39 +24,55 @@ import Vodal from "vodal";
 
 Vue.component(Vodal.name, Vodal);
 
+// types: [
+//   "zoom",
+//   "fade",
+//   "flip",
+//   "door",
+//   "rotate",
+//   "slideUp",
+//   "slideDown",
+//   "slideLeft",
+//   "slideRight"
+// ];
 export default {
   name: "ioVodal",
-
+  components: {
+    // Vue,
+    Vodal
+  },
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    animation: {
+      type: String,
+      default: "door"
+    },
+    paddingTop: {
+      type: String,
+      default: `paddingTop: ${(window.innerHeight - 440) / 2}px`
+    },
+    duration: {
+      type: Number,
+      default: 500
+    }
+  },
   data() {
     return {
-      show: false,
-      animation: "",
-      paddingTop: `paddingTop: ${(window.innerHeight - 440) / 2}px`,
-      types: [
-        "zoom",
-        "fade",
-        "flip",
-        "door",
-        "rotate",
-        "slideUp",
-        "slideDown",
-        "slideLeft",
-        "slideRight"
-      ]
+      status: this.show
     };
   },
-
   methods: {
-    delay(index) {
-      return `
-        animationDelay: ${index * 100}ms;
-        WebkitAnimationDelay: ${index * 100}ms;
-      `;
-    },
-
-    onShow(animation) {
-      this.animation = animation;
-      this.show = true;
+    showDialog(param) {
+      this.status = param;
+      this.$emit("on-status", param);
+    }
+  },
+  watch: {
+    show(newvalue) {
+      this.status = newvalue;
     }
   }
 };

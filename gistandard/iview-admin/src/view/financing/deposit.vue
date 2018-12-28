@@ -1,5 +1,8 @@
 <template>
-  <io-vodal class="wrap"></io-vodal>
+  <div>
+    <button class="btn" @click="status(true)" style="width:200px;height:100px;"></button>
+    <io-vodal class="wrap" :show="show" :duration="duration" @on-status="status"></io-vodal>
+  </div>
 </template>
 
 <script>
@@ -11,8 +14,15 @@ export default {
     ioVodal
   },
   data() {
-    return {};
+    return {
+      duration: 500,
+      show: false
+    };
   },
-  methods: {}
+  methods: {
+    status(param) {
+      this.show = param;
+    }
+  }
 };
 </script>
