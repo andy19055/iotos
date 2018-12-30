@@ -4,15 +4,17 @@
       <side-menu :accordion="accordion" ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList">
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
-          <!-- <img v-show="!collapsed" :src="maxLogo" key="max-logo"/> -->
-          <div v-show="!collapsed">
-            <div style="margin-top: 4px;color: white;">
-              <Icon key="max-logo" type=" iconfont icon-iotos-logo" size="28"/>
-              <span style="font-size:13pt;font-family:幼圆;vertical-align:bottom;padding-left: 4px;">{{productName}}</span>
+          <a v-show="!collapsed" href="http://iotos.net.cn">
+            <div style="margin-top: 4px;color: white;position: relative;padding-left: 5px">
+              <Icon key="max-logo" type=" iconfont icon-IOTOS" size="20" style="float:left;padding-right: 5px;"/>
+              <div style="font-size:13pt;font-family:幼圆;">{{productName}}</div>
             </div>
-            <div style="color:rgba(192, 192, 192, 0.582);font: size 1;font-family: 'Times New Roman', Times, serif">{{productSubtitle}}</div>
-          </div>
-          <Icon v-show="collapsed" type=" iconfont icon-iotos-logo" size="32" style="color: white;margin-top:10px;"/>
+            <div style="color:rgba(192, 192, 192, 0.582);font: size 1;font-family: 'Times New Roman', Times, serif;padding-left: 5px ">{{productSubtitle}}</div>
+          </a>
+          <a v-show="collapsed" href="http://iotos.net.cn">
+            <Icon type=" iconfont icon-IOTOS" size="22" style="color: white;margin-top:6px;padding-left: 3px;"/>
+            <div style="color:rgba(192, 192, 192, 0.582);margin-top:5px;font-size: 1pt;font-family: 'Times New Roman', Times, serif;padding-left: 3px;">{{productDomain}}</div>
+          </a>
         </div>
       </side-menu>
     </Sider>
@@ -85,6 +87,7 @@ export default {
       screenHeight:0,
       productName: '智慧建筑综合应用平台',
       productSubtitle: "Intelligent Building Comprehensive Application Platform",
+      productDomain: 'iotos.net.cn'
     };
   },
   computed: {
