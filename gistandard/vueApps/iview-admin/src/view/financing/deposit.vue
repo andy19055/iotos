@@ -1,11 +1,5 @@
 <template>
-  <div>
-    <button @click="show = true" style="width:200px;height:100px;"></button>
-    <io-vodal class="wrap" :show="show" :duration="duration" @on-status="status">
-      <span slot="head">测试DEMO</span>
-      <input type="textarea" slot="body" value="哈哈哈哈哈">
-    </io-vodal>
-  </div>
+  <iframe src="http://localhost:8081/#/dashboard" width="100%" height="100%" style="border:none"></iframe>
 </template>
 
 <script>

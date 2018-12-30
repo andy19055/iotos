@@ -1,117 +1,130 @@
 <template>
   <div>
-    <Card>
-      <div class="drag-box-card">
-        <!-- 切记设置list1和list2属性时，一定要添加.sync修饰符 -->
-        <drag-list
-          :list1.sync="list1"
-          :list2.sync="list2"
-          :dropConClass="dropConClass"
-          @on-change="handleChange"
-        >
-          <h3 slot="left-title">待办事项</h3>
-          <Card class="drag-item" slot="left" slot-scope="left">{{ left.itemLeft.name }}</Card>
-          <h3 slot="right-title">完成事项</h3>
-          <Card class="drag-item" slot="right" slot-scope="right">{{ right.itemRight.name }}</Card>
-        </drag-list>
-      </div>
-      <div class="handle-log-box">
-        <h3>操作记录</h3>
-        <div class="handle-inner-box">
-          <p v-for="(item, index) in handleList" :key="`handle_item_${index}`">{{ item }}</p>
-        </div>
-      </div>
-      <div class="res-show-box">
-        <pre>{{ list1 }}</pre>
-      </div>
-      <div class="res-show-box">
-        <pre>{{ list2 }}</pre>
-      </div>
-    </Card>
+    <ioTable :columnFileds="columns" :datasource="tableData"></ioTable>
   </div>
 </template>
+
 <script>
-import DragList from "_c/drag-list";
-import { getDragList } from "@/api/data";
+import { getTableData } from "@/api/data";
+import ioTable from "_c/iotable/iotable.vue";
+
+const datasource = [
+  {
+    name: "2019-001",
+    begin: "2019/01/01 12:13:14",
+    end: "2019/01/01 12:13:14",
+    amount: 58,
+    receipt: 58,
+    payedtime: "2019/01/01 12:13:14"
+  },
+  {
+    name: "2019-002",
+    status: "意向签订",
+    begin: "2019/01/01 12:13:14",
+    end: "2019/01/01 12:13:14",
+    amount: 10,
+    receipt: 0,
+    payedtime: "2019/01/01 12:13:14"
+  },
+  {
+    name: "2019-003",
+    begin: "2019/01/01 12:13:14",
+    end: "2019/01/01 12:13:14",
+    amount: 23,
+    receipt: 23,
+    payedtime: "2019/01/01 12:13:14"
+  },
+  {
+    name: "2019-004",
+    begin: "2019/01/01 12:13:14",
+    end: "2019/01/01 12:13:14",
+    amount: 46,
+    receipt: 0,
+    payedtime: "2019/01/01 12:13:14"
+  }
+];
+
 export default {
-  name: "drag_list_page",
+  name: "page_financing_carparking",
   components: {
-    DragList
+    ioTable
   },
   data() {
     return {
-      list1: [],
-      list2: [],
-      dropConClass: {
-        left: ["drop-box", "left-drop-box"],
-        right: ["drop-box", "right-drop-box"]
-      },
-      handleList: []
+      columns: [
+        {
+          title: "一卡通卡号",
+          slot: "name",
+          sortable: true,
+          filter: {
+            type: "Input"
+          }
+        },
+        {
+          title: "进停车场时间",
+          slot: "begin",
+          filter: {
+            type: "DatePicker",
+            option: {
+              type: "datetime",
+              format: "yyyy/MM/dd HH:mm:ss"
+            }
+          }
+        },
+        {
+          title: "出停车场时间",
+          slot: "end",
+          filter: {
+            type: "DatePicker",
+            option: {
+              type: "datetime",
+              format: "yyyy/MM/dd HH:mm:ss"
+            }
+          }
+        },
+        {
+          title: "应收金额",
+          slot: "amount",
+          filter: {
+            type: "InputNumber"
+          }
+        },
+        {
+          title: "实收金额",
+          slot: "receipt",
+          filter: {
+            type: "InputNumber"
+          }
+        },
+        {
+          title: "缴费时间",
+          slot: "payedtime",
+          filter: {
+            type: "DatePicker",
+            option: {
+              type: "datetime",
+              format: "yyyy/MM/dd HH:mm:ss"
+            }
+          }
+        }
+      ],
+      tableData: datasource
     };
   },
   methods: {
-    handleChange({ src, target, oldIndex, newIndex }) {
-      this.handleList.push(`${src} => ${target}, ${oldIndex} => ${newIndex}`);
+    exportExcel() {
+      this.$refs.tables.exportCsv({
+        filename: `table-${new Date().valueOf()}.csv`
+      });
     }
   },
   mounted() {
-    getDragList().then(res => {
-      this.list1 = res.data;
-      this.list2 = [res.data[0]];
+    getTableData().then(res => {
+      //      this.tableData = res.data
     });
   }
 };
 </script>
-<style lang="less">
-.drag-box-card {
-  display: inline-block;
-  width: 600px;
-  height: 560px;
-  .drag-item {
-    margin: 10px;
-  }
-  h3 {
-    padding: 10px 15px;
-  }
-  .drop-box {
-    border: 1px solid #eeeeee;
-    height: 455px;
-    border-radius: 5px;
-  }
-  .left-drop-box {
-    margin-right: 10px;
-  }
-  .right-drop-box {
-    //
 
-  }
-}
-.handle-log-box {
-  display: inline-block;
-  margin-left: 20px;
-  border: 1px solid #eeeeee;
-  vertical-align: top;
-  width: 200px;
-  height: 500px;
-  h3 {
-    padding: 10px 14px;
-  }
-  .handle-inner-box {
-    height: ~"calc(100% - 44px)";
-    overflow: auto;
-    p {
-      padding: 14px 0;
-      margin: 0 14px;
-      border-bottom: 1px dashed #eeeeee;
-    }
-  }
-}
-.res-show-box {
-  display: inline-block;
-  margin-left: 20px;
-  border: 1px solid #eeeeee;
-  vertical-align: top;
-  width: 350px;
-  height: 570px;
-}
+<style>
 </style>

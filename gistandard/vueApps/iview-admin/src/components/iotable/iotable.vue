@@ -51,8 +51,15 @@
             />
             <DatePicker
               v-else-if="editIndex === index && colItem.filter.type === 'DatePicker'"
-              type="date"
-              format="yyyy年MM月dd日"
+              :type="colItem.filter.option.type"
+              :format="colItem.filter.option.format"
+              :value="editData[colItem.slot]"
+              @on-change="editData[colItem.slot]=$event"
+            />
+            <TimePicker
+              v-else-if="editIndex === index && colItem.filter.type === 'TimePicker'"
+              :type="colItem.filter.option.type"
+              :format="colItem.filter.option.format"
               :value="editData[colItem.slot]"
               @on-change="editData[colItem.slot]=$event"
             />
@@ -139,7 +146,7 @@ export default {
             type: "Button",
             icon: "ios-create-outline"
           },
-          options: ["delete"],
+          // options: ["delete"],
           minWidth: 50,
           maxWidth: 300
         }
@@ -333,8 +340,8 @@ export default {
             return h(this.columns[index].filter.type, {
               props: {
                 placeholder: "输入" + this.columns[index].title,
-                type: "date",
-                format: "yyyy年MM月dd日"
+                type: this.columns[index].filter.option.type,
+                format: this.columns[index].filter.option.format
               },
               on: {
                 "on-change": val => {

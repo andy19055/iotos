@@ -69,7 +69,11 @@ export default {
           title: "来访日期",
           slot: "time",
           filter: {
-            type: "DatePicker"
+            type: "DatePicker",
+            option: {
+              type: "date",
+              format: "yyyy年MM月dd日"
+            }
           }
         },
         {

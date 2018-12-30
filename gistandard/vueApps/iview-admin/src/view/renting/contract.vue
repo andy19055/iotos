@@ -96,14 +96,22 @@ export default {
           title: "生效日期",
           slot: "begin",
           filter: {
-            type: "DatePicker"
+            type: "DatePicker",
+            option: {
+              type: "date",
+              format: "yyyy年MM月dd日"
+            }
           }
         },
         {
           title: "结束日期",
           slot: "end",
           filter: {
-            type: "DatePicker"
+            type: "DatePicker",
+            option: {
+              type: "date",
+              format: "yyyy年MM月dd日"
+            }
           }
         },
         {
