@@ -4,9 +4,15 @@
       <side-menu :accordion="accordion" ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList">
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
-          <img v-show="!collapsed" :src="maxLogo" key="max-logo"/>
-          <Icon v-show="collapsed" type=" iconfont icon-iotos-logo" size="28" style="color: white;padding:1px;margin-top: 8px;border: 0px solid grey;border-radius: 10px;"/>
-          <!--<img v-show="collapsed" :src="minLogo" key="min-logo" style="height: 100% !important"/>-->
+          <!-- <img v-show="!collapsed" :src="maxLogo" key="max-logo"/> -->
+          <div v-show="!collapsed">
+            <div style="margin-top: 4px;color: white;">
+              <Icon key="max-logo" type=" iconfont icon-iotos-logo" size="28"/>
+              <span style="font-size:13pt;font-family:幼圆;vertical-align:bottom;padding-left: 4px;">{{productName}}</span>
+            </div>
+            <div style="color:rgba(192, 192, 192, 0.582);font: size 1;font-family: 'Times New Roman', Times, serif">{{productSubtitle}}</div>
+          </div>
+          <Icon v-show="collapsed" type=" iconfont icon-iotos-logo" size="32" style="color: white;margin-top:10px;"/>
         </div>
       </side-menu>
     </Sider>
@@ -76,7 +82,9 @@ export default {
       topMenuName: '1',
       realtimeMenu: this.$store.getters.menuList,
       accordion: false,
-      screenHeight:0
+      screenHeight:0,
+      productName: '智慧建筑综合应用平台',
+      productSubtitle: "Intelligent Building Comprehensive Application Platform",
     };
   },
   computed: {
