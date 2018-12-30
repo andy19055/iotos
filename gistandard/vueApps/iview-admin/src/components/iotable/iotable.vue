@@ -314,24 +314,69 @@ export default {
           this.columns[index].filter.type === "Button"
         ) {
           render = h => {
-            return h(this.columns[index].filter.type, {
-              props: {
-                icon: "ios-search",
-                text: "查询",
-                type: "primary",
-                size: "large",
-                shape: "circle"
-              },
-              on: {
-                "on-click": () => {
-                  //查询按钮点击，从服务器去查，待实现，这个search应该是传到后台,然后台来根据条件查询数据库；
-                  //----------------------------------------------------------------------------
-                  //【TODO】
-                  //----------------------------------------------------------------------------
-                }
-              }
-            });
+            return h("ButtonGroup", [
+              h(
+                this.columns[index].filter.type,
+                {
+                  props: {
+                    icon: "md-globe",
+                    type: "primary",
+                    size: "default",
+                    shape: "circle"
+                  },
+                  on: {
+                    "on-click": () => {
+                      //查询按钮点击，从服务器去查，待实现，这个search应该是传到后台,然后台来根据条件查询数据库；
+                      //----------------------------------------------------------------------------
+                      //【TODO】
+                      //----------------------------------------------------------------------------
+                    }
+                  }
+                },
+                "查询"
+              ),
+              h(
+                this.columns[index].filter.type,
+                {
+                  props: {
+                    icon: "md-add",
+                    // type: "primary",
+                    size: "default",
+                    shape: "circle"
+                  },
+                  on: {
+                    "on-click": () => {
+                      //查询按钮点击，从服务器去查，待实现，这个search应该是传到后台,然后台来根据条件查询数据库；
+                      //----------------------------------------------------------------------------
+                      //【TODO】
+                      //----------------------------------------------------------------------------
+                    }
+                  }
+                },
+                "新增"
+              )
+            ]);
           };
+
+          // render = h => {
+          //   return h(this.columns[index].filter.type, {
+          //     props: {
+          //       icon: "ios-search",
+          //       text: "查询",
+          //       type: "primary",
+          //       size: "large",
+          //       shape: "circle"
+          //     },
+          //     on: {
+          //       "on-click": () => {
+          //         //查询按钮点击，从服务器去查，待实现，这个search应该是传到后台,然后台来根据条件查询数据库；
+          //         //----------------------------------------------------------------------------
+          //         //【TODO】
+          //         //----------------------------------------------------------------------------
+          //       }
+          //     }
+          //   });
+          // };
         } else if (
           this.columns[index].filter.type &&
           this.columns[index].filter.type === "DatePicker"

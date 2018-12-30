@@ -15,6 +15,7 @@ const datasource = [
     end: "2019/01/01 12:13:14",
     amount: 58,
     receipt: 58,
+    balance: 0,
     payedtime: "2019/01/01 12:13:14"
   },
   {
@@ -24,6 +25,7 @@ const datasource = [
     end: "2019/01/01 12:13:14",
     amount: 10,
     receipt: 0,
+    balance: 0,
     payedtime: "2019/01/01 12:13:14"
   },
   {
@@ -32,6 +34,7 @@ const datasource = [
     end: "2019/01/01 12:13:14",
     amount: 23,
     receipt: 23,
+    balance: 0,
     payedtime: "2019/01/01 12:13:14"
   },
   {
@@ -40,6 +43,7 @@ const datasource = [
     end: "2019/01/01 12:13:14",
     amount: 46,
     receipt: 0,
+    balance: 0,
     payedtime: "2019/01/01 12:13:14"
   }
 ];
@@ -92,6 +96,13 @@ export default {
         {
           title: "实收金额",
           slot: "receipt",
+          filter: {
+            type: "InputNumber"
+          }
+        },
+        {
+          title: "卡内余额",
+          slot: "balance",
           filter: {
             type: "InputNumber"
           }
