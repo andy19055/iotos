@@ -12,6 +12,7 @@
       "webRoot": "${workspaceRoot}/src",
       "url": "http://localhost:8080/*",
       "sourceMaps": true,
+      "breakOnLoad": false,
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*"
       }
