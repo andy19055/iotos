@@ -1,0 +1,3 @@
+start C:\Users\ThinkPad\AppData\Local\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222
+
+npm run dev
