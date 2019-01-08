@@ -4,7 +4,7 @@
       <div class="logo">
         <a href="index.html"
           ><img
-            src="../assets/images/logo.png"
+            src="../../static/images/logo.png"
             alt="北京网站建设_网站制作_千助"
             class="img-responsive ori"
         /></a>
@@ -175,7 +175,7 @@
             <div class="swiper-slide">
               <a href="cases_detail.html" target="_blank">
                 <img
-                  src="../assets/images/0104416527.jpg"
+                  src="../../static/images/0104416527.jpg"
                   alt="中交一局海外分公司网站建设项目"
                 />
                 <p>
@@ -187,7 +187,7 @@
             <div class="swiper-slide">
               <a href="cases_detail.html" target="_blank">
                 <img
-                  src="../assets/images/0111546659.jpg"
+                  src="../../static/images/0111546659.jpg"
                   alt="天宸元集团官网建设"
                 />
                 <p>
@@ -199,7 +199,7 @@
             <div class="swiper-slide">
               <a href="cases_detail.html" target="_blank">
                 <img
-                  src="../assets/images/1241022472.jpg"
+                  src="../../static/images/1241022472.jpg"
                   alt="中环球船务官方网站设计"
                 />
                 <p>
@@ -382,7 +382,7 @@
         <div class="above">
           <div class="wechat">
             <img
-              src="../assets/images/wechat_code.jpg"
+              src="../../static/images/wechat_code.jpg"
               alt="扫描关注千助微信公众账号"
             />
           </div>
@@ -430,7 +430,7 @@
           <i></i>
           <p>
             <img
-              src="../assets/images/wechat_code.jpg"
+              src="../../static/images/wechat_code.jpg"
               alt="扫描关注网站建设微信公众账号"
             />
           </p>
@@ -452,25 +452,3 @@
     }
   };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1,
-  h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
-</style>
