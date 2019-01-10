@@ -6,7 +6,7 @@
           <div class="logo">
             <a href="index.html"
               ><img
-                src="../../../../public/static/common/logo2.gif"
+                src="../../../../public/static/common/IOTOS-爱投斯（中国深圳）.gif"
                 alt="爱投斯物联网"
                 class="img-responsive ori"
             /></a>
