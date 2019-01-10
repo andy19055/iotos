@@ -3,18 +3,11 @@
     <header>
       <div class="logo">
         <a href="index.html">
-          <icons
-            type=" iconfont icon-iotos-logo"
-            :size="44"
-            class="img-responsive ori"
-            style="color:silver;"
-            >爱投斯（深圳）</icons
-          >
           <div class="logo">
             <a href="index.html"
               ><img
-                src="../../../../public/static/iotosHome/images/logo.png"
-                alt="北京网站建设_网站制作_千助"
+                src="../../../../public/static/common/logo2.gif"
+                alt="爱投斯物联网"
                 class="img-responsive ori"
             /></a>
           </div>
@@ -33,13 +26,13 @@
         </ul>
       </nav>
       <div class="hotline">
-        <a href="tel:4006123011" title="网站建设免费咨询热线"
-          ><span>4006-123-011</span></a
+        <a href="tel:4001188502" title="网站建设免费咨询热线"
+          ><span>400-1188-502</span></a
         >
         <u></u>
       </div>
       <div class="menu-icon">
-        <a href="tel:4006123011" title="点击直拨网站建设热线"
+        <a href="tel:4001188502" title="点击直拨网站建设热线"
           ><span class="glyphicon glyphicon-earphone"></span
         ></a>
         <span class="glyphicon glyphicon-th-large"></span>
