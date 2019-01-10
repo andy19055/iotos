@@ -3,11 +3,21 @@
     <header>
       <div class="logo">
         <a href="index.html">
-          <img
-            src="images/logo.png"
-            alt="北京网站建设_网站制作_千助"
+          <icons
+            type=" iconfont icon-iotos-logo"
+            :size="44"
             class="img-responsive ori"
-          />
+            style="color:silver;"
+            >爱投斯（深圳）</icons
+          >
+          <div class="logo">
+            <a href="index.html"
+              ><img
+                src="../../../../public/static/iotosHome/images/logo.png"
+                alt="北京网站建设_网站制作_千助"
+                class="img-responsive ori"
+            /></a>
+          </div>
         </a>
       </div>
       <nav class="menu">
@@ -445,8 +455,8 @@
 </template>
 
 <script>
-  import Icons from "../components/icons";
-  import "../assets/icons/iconfont.css";
+  import "@/assets/icons/iconfont.css";
+  import Icons from "_c/icons";
   export default {
     name: "Index",
     components: {

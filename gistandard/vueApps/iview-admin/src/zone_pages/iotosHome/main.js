@@ -4,12 +4,8 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router";
 
-import Icons from "./components/icons";
-import "./assets/icons/iconfont.css";
-
-Vue.config.productionTip = false;
-
-Vue.use(Icons);
+import iView from "iview";
+Vue.use(iView);
 
 new Vue({
   router,
