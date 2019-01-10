@@ -27,15 +27,16 @@ module.exports = {
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   // 如果你不需要使用eslint，把lintOnSave设为false即可
-  lintOnSave: true,
+  lintOnSave: false,
+
   chainWebpack: config => {
     config.resolve.alias
       .set("@", resolve("src")) // key,value自行定义，比如.set('@@', resolve('src/components'))
+      .set("@@", resolve("src/view_pages"))
       .set("_c", resolve("src/components"))
       .set("_n", resolve("node_modules"));
   },
-  // 设为false打包时不生成.map文件
-  productionSourceMap: false
+
   // configureWebpack: {
   //   devtool: "source-map",
   //   cacheBusting: false
@@ -44,4 +45,28 @@ module.exports = {
   // devServer: {
   //   proxy: 'localhost:3000'
   // }
+
+  // 设为false打包时不生成.map文件
+  productionSourceMap: false,
+
+  pages: {
+    iotosHome: {
+      entry: "src/view_pages/iotosHome/main.js",
+      template: "public/home.html",
+      filename: "index.html",
+      title: "爱投斯官网"
+    },
+    page1: {
+      entry: "src/view_pages/page1/main.js",
+      template: "public/index.html",
+      filename: "page1.html",
+      title: "page1"
+    },
+    page2: {
+      entry: "src/view_pages/page2/main.js",
+      template: "public/index.html",
+      filename: "page2.html",
+      title: "page2"
+    }
+  }
 };
