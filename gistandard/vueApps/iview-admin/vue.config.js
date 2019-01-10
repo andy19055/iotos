@@ -32,7 +32,7 @@ module.exports = {
   chainWebpack: config => {
     config.resolve.alias
       .set("@", resolve("src")) // key,value自行定义，比如.set('@@', resolve('src/components'))
-      .set("@@", resolve("src/view_pages"))
+      .set("@@", resolve("src/zone_pages"))
       .set("_c", resolve("src/components"))
       .set("_n", resolve("node_modules"));
   },
@@ -51,19 +51,25 @@ module.exports = {
 
   pages: {
     iotosHome: {
-      entry: "src/view_pages/iotosHome/main.js",
-      template: "public/home.html",
+      entry: "src/zone_pages/iotosHome/main.js",
+      template: "public/iotosHome.html",
       filename: "index.html",
       title: "爱投斯官网"
     },
+    dataVusual: {
+      entry: "src/zone_pages/dataVusual/main.js",
+      template: "public/dataVusual.html",
+      filename: "dataVisual.html",
+      title: "dataVusual"
+    },
     page1: {
-      entry: "src/view_pages/page1/main.js",
+      entry: "src/zone_pages/page1/main.js",
       template: "public/index.html",
       filename: "page1.html",
       title: "page1"
     },
     page2: {
-      entry: "src/view_pages/page2/main.js",
+      entry: "src/zone_pages/page2/main.js",
       template: "public/index.html",
       filename: "page2.html",
       title: "page2"
