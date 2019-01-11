@@ -22,8 +22,8 @@
         </ul>
       </nav>
       <div class="hotline">
-        <a href="tel:4001188502" title="网站建设免费咨询热线"
-          ><span>400-1188-502</span></a
+        <a href="tel:4001188502" title="物联网方案免费咨询热线"
+          ><span>{{ hotline }}</span></a
         >
         <u></u>
       </div>
@@ -36,7 +36,7 @@
     </header>
 
     <div class="welcome">
-      <p><u>Loading . . .</u></p>
+      <p><u>欢迎访问...</u></p>
     </div>
     <section class="video">
       <div class="swiper-container">
@@ -389,9 +389,10 @@
           <div class="left">
             <a href="tel:4006123011" title="网站制作咨询热线" class="tel"></a>
             <p>
-              中国<u>&middot;</u>北京<u
-              ></u
-              >中关村科技园<br />联系电话：010-58859656<u>/</u>58851650<br />地址：海淀区上地东路盈创动力E座905<br />邮编：100085<a
+              中国<u>&middot;</u>北京<u></u>中关村科技园<br />联系电话：{{
+                hotline
+              }}<u>/</u
+              >58851650<br />地址：海淀区上地东路盈创动力E座905<br />邮编：100085<a
                 href="/job/saleman.html"
                 target="_blank"
                 class="job"
@@ -424,7 +425,7 @@
         <li class="tel">
           <i></i>
           <p>
-            建站咨询热线：<br />4006-123-011<br />售后电话：<br />010-53305670
+            建站咨询热线：<br />4006-123-011<br />售后电话：<br />{{ hotline }}
           </p>
         </li>
         <li class="wechat">
@@ -453,7 +454,6 @@
     },
     data() {
       return {
-        msg: "Welcome to Your Vue.js App",
         menuList: [
           "首页",
           "业务",
@@ -463,7 +463,8 @@
           "增值",
           "关于",
           "联系"
-        ]
+        ],
+        hotline: "400-1188-502"
       };
     }
   };
