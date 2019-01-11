@@ -2,27 +2,23 @@
   <div>
     <header>
       <div class="logo">
-        <a href="index.html">
-          <div class="logo">
-            <a href="index.html"
-              ><img
-                src="../../../../public/static/common/IOTOS-爱投斯（中国深圳）.gif"
-                alt="爱投斯物联网"
-                class="img-responsive ori"
-            /></a>
-          </div>
-        </a>
+        <a href="index.html"
+          ><img
+            src="../../../../public/static/common/IOTOS-爱投斯（中国深圳）.gif"
+            alt="爱投斯物联网"
+            class="img-responsive ori"
+        /></a>
       </div>
       <nav class="menu">
         <ul class="list-inline">
-          <li class="active"><a>首页</a></li>
-          <li><a>业务</a></li>
-          <li><a>案例</a></li>
-          <li><a>客户</a></li>
-          <li><a>品质</a></li>
-          <li><a>增值</a></li>
-          <li><a>关于</a></li>
-          <li><a>联系</a></li>
+          <template v-for="item in menuList">
+            <li v-if="menuList.indexOf(item) == 1" class="active">
+              <a>{{ item }}</a>
+            </li>
+            <li v-else>
+              <a>{{ item }}</a>
+            </li>
+          </template>
         </ul>
       </nav>
       <div class="hotline">
@@ -457,7 +453,17 @@
     },
     data() {
       return {
-        msg: "Welcome to Your Vue.js App"
+        msg: "Welcome to Your Vue.js App",
+        menuList: [
+          "首页",
+          "业务",
+          "案例",
+          "客户",
+          "品质",
+          "增值",
+          "关于",
+          "联系"
+        ]
       };
     }
   };
