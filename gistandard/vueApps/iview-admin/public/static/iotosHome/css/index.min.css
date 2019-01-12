@@ -279,11 +279,11 @@ div.welcome {
   background-color: White;
   -moz-background-size: cover;
   background-size: cover;
-  -webkit-transition: all 0.3s ease-in-out 0.5s;
-  -moz-transition: all 0.3s ease-in-out 0.5s;
-  -ms-transition: all 0.3s ease-in-out 0.5s;
-  -o-transition: all 0.3s ease-in-out 0.5s;
-  transition: all 0.3s ease-in-out 0.5s;
+  -webkit-transition: all 0.3s ease-in-out 0.8s;
+  -moz-transition: all 0.3s ease-in-out 0.8s;
+  -ms-transition: all 0.3s ease-in-out 0.8s;
+  -o-transition: all 0.3s ease-in-out 0.8s;
+  transition: all 0.3s ease-in-out 0.8s;
   z-index: 999;
 }
 div.welcome p {
@@ -292,7 +292,7 @@ div.welcome p {
   margin: 0px;
   padding: 0px;
   width: 596px;
-  height: 70px;
+  height: 100px;
   padding-top: 140px;
   top: 50%;
   left: 45%;
