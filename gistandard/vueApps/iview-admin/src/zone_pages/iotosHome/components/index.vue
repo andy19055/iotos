@@ -4,7 +4,7 @@
       <div class="logo">
         <a href="index.html"
           ><img
-            src="../../../../public/static/common/IOTOS-爱投斯（中国深圳）.gif"
+            src="../../../../public/static/common/IOTOS-爱投斯（中国深圳）.png"
             alt="爱投斯物联网"
             class="img-responsive ori"
         /></a>
@@ -36,7 +36,7 @@
     </header>
 
     <div class="welcome">
-      <p><u>欢迎访问...</u></p>
+      <p><u>欢迎访问，即将跳转...</u></p>
     </div>
     <section class="video">
       <div class="swiper-container">
