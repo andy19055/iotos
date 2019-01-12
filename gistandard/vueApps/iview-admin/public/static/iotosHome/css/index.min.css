@@ -279,11 +279,11 @@ div.welcome {
   background-color: White;
   -moz-background-size: cover;
   background-size: cover;
-  -webkit-transition: all 0.3s ease-in-out 0.8s;
-  -moz-transition: all 0.3s ease-in-out 0.8s;
-  -ms-transition: all 0.3s ease-in-out 0.8s;
-  -o-transition: all 0.3s ease-in-out 0.8s;
-  transition: all 0.3s ease-in-out 0.8s;
+  -webkit-transition: all 0.3s ease-in-out 2s;
+  -moz-transition: all 0.3s ease-in-out 2s;
+  -ms-transition: all 0.3s ease-in-out 2s;
+  -o-transition: all 0.3s ease-in-out 2s;
+  transition: all 0.3s ease-in-out 2s;
   z-index: 999;
 }
 div.welcome p {
