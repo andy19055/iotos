@@ -47,17 +47,17 @@
             <div class="box">
               <div class="left"></div>
               <div class="right">
-                <span>年专注，物联网云计算领域</span> <i></i>
+                <span>{{speciality[0]}}</span> <i></i>
                 <p>
-                  <br/>始于 2010年 - 2019年 展望未来<br /></br>工业控制、嵌入式、设备采集、无线通信、云计算、数据大脑
+                  <br/>{{speciality[1]}}<br /></br>{{speciality[2]}}
                 </p>
               </div>
             </div>
           </div>
           <div class="swiper-slide nth2">
             <div class="box">
-              <span>设计控，也醉了</span> <i></i>
-              <p>不是非要高大上，只是醉心于设计<br />我们想，再上一个好案例</p>
+              <span>{{cutting_edge[0]}}</span> <i></i>
+              <p><br/>{{cutting_edge[1]}}<br /><br/>{{cutting_edge[2]}}</p>
             </div>
           </div>
           <div class="swiper-slide nth3">
@@ -468,7 +468,8 @@
         ],
         hotline: "400-1188-502",
         entering: "欢迎访问，即将跳转...",
-        value2: 0
+        speciality:['年专注，物联网云计算领域','涉足始于 2010年 - 2019年 展望未来','工业控制、嵌入式、设备采集、无线通信、云计算、数据大脑'],
+        cutting_edge: ['技术前沿', 'BAT互联网背景 + AWS + AZURE', '技术一脉相承，紧随云时代最前沿']
       };
     }
   };
