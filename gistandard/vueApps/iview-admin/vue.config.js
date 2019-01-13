@@ -64,13 +64,13 @@ module.exports = {
     },
     page1: {
       entry: "src/zone_pages/page1/main.js",
-      template: "public/index.html",
+      template: "public/page1.html",
       filename: "page1.html",
       title: "page1"
     },
     page2: {
       entry: "src/zone_pages/page2/main.js",
-      template: "public/index.html",
+      template: "public/page2.html",
       filename: "page2.html",
       title: "page2"
     }

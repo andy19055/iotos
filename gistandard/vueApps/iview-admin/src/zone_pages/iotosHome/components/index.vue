@@ -36,7 +36,9 @@
     </header>
 
     <div class="welcome">
-      <p><u>欢迎访问，即将跳转...</u></p>
+      <p>
+        <u>{{ entering }}</u>
+      </p>
     </div>
     <section class="video">
       <div class="swiper-container">
@@ -45,9 +47,9 @@
             <div class="box">
               <div class="left"></div>
               <div class="right">
-                <span>年专注，网站建设</span> <i></i>
+                <span>年专注，物联网云计算领域</span> <i></i>
                 <p>
-                  始于 2008 - 2015 展望未来<br />专注于设计体验，专业于解决方案
+                  <br/>始于 2010年 - 2019年 展望未来<br /></br>工业控制、嵌入式、设备采集、无线通信、云计算、数据大脑
                 </p>
               </div>
             </div>
@@ -460,12 +462,13 @@
           "优势",
           "案例",
           "合作",
-          "资讯",
           "联系",
           "下载",
           "登录"
         ],
-        hotline: "400-1188-502"
+        hotline: "400-1188-502",
+        entering: "欢迎访问，即将跳转...",
+        value2: 0
       };
     }
   };
