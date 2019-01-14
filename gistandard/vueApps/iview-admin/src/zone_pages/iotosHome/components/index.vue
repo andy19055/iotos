@@ -8,7 +8,7 @@
             alt="爱投斯物联网"
             class="img-responsive ori"/>
       </a>
-        <img src="../../../../public/static/iotosHome/images/logo_mini.png" class="img-responsive mini">
+        <img src="../../../../public/static/iotosHome/images/logo_mini.png" class="img-responsive mini" style="min-width:220%;max-height:120%;margin-top:-10px;">
       </div>
       <nav class="menu">
         <ul class="list-inline">
