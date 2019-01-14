@@ -5,6 +5,7 @@
         <a href="index.html"
           ><img
             src="../../../../public/static/common/IOTOS-爱投斯（中国深圳）.png"
+            style="min-width:120%;max-height:120%"
             alt="爱投斯物联网"
             class="img-responsive ori"/>
       </a>
