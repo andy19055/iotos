@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div class="root">
     <header>
       <div class="logo">
         <a href="index.html"
           ><img
             src="../../../../public/static/common/IOTOS-爱投斯（中国深圳）.png"
             alt="爱投斯物联网"
-            class="img-responsive ori"
-        /></a>
+            class="img-responsive ori"/>
+      </a>
+        <img src="../../../../public/static/iotosHome/images/logo_mini.png" class="img-responsive mini">
       </div>
       <nav class="menu">
         <ul class="list-inline">
@@ -43,7 +44,7 @@
     <section class="video">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide nth1">
+          <div class="swiper-slide nth1" id="nth1">
             <div class="box">
               <div class="left"></div>
               <div class="right">
@@ -57,16 +58,20 @@
           <div class="swiper-slide nth2">
             <div class="box">
               <span>{{cutting_edge[0]}}</span> <i></i>
-              <p><br/>{{cutting_edge[1]}}<br /><br/>{{cutting_edge[2]}}</p>
+              <p>
+                <br/>
+                {{cutting_edge[1]}}
+                <br /><br/>{{cutting_edge[2]}}
+              </p>
             </div>
           </div>
           <div class="swiper-slide nth3">
             <div class="box">
-              <div class="top">技术派，论研发</div>
+              <div class="top">{{experienced[0]}}</div>
               <div class="mid"></div>
               <div class="bottom">
-                我说，业界没有最好的技术，只有最棒的技术开发者
-                <br />定制研发，为您的客户和团队
+                <br/>{{experienced[1]}}
+                <br /><br/>{{experienced[2]}}
               </div>
             </div>
           </div>
@@ -449,6 +454,7 @@
 <script>
   import "@/assets/icons/iconfont.css";
   import Icons from "_c/icons";
+
   export default {
     name: "Index",
     components: {
@@ -468,9 +474,24 @@
         ],
         hotline: "400-1188-502",
         entering: "欢迎访问，即将跳转...",
-        speciality:['年专注，物联网云计算领域','涉足始于 2010年 - 2019年 展望未来','工业控制、嵌入式、设备采集、无线通信、云计算、数据大脑'],
-        cutting_edge: ['技术前沿', 'BAT互联网背景 + AWS + AZURE', '技术一脉相承，紧随云时代最前沿']
+        speciality:['年专注，物联网云计算','涉足始于2010年 - 2019年 展望未来','工业控制、设备采集、无线通信、云计算、数据大脑、3D可视化'],
+        cutting_edge: ['掌握前沿技术', 'BAT互联网背景 + AWS + AZURE', '技术一脉相承，紧随云时代最前沿'],
+        experienced: ['行业经验丰富','智慧城市 - 智能制造 - 动环监测','']
       };
+    },
+    methods: {
+      test() {
+        alert(111222333)
+      }
+    },
+    created: function () {
+    },
+    mounted() {
+      window.onload = function windowClick() {
+        setTimeout(function () {
+          $("#app").resize()
+        }, 800); 
+      }
     }
   };
 </script>
