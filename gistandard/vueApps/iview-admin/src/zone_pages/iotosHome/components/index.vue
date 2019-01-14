@@ -84,6 +84,10 @@
                 {{costEfficient[1]}}
                 <br /><br />
                 {{costEfficient[2]}}
+                <br /><br />
+                {{costEfficient[3]}}
+                <br /><br />
+                {{costEfficient[4]}}
               </div>
             </div>
           </div>
@@ -100,46 +104,11 @@
             >more</a
           >
           <ul>
-            <li>
-              <a
-                href="article_detail.html?id=48.html"
-                target="_blank"
-                title="钱都砸去哪里了，为什么我的网站推广没有效果？"
-                >钱都砸去哪里了，为什么我的网站推广没 ...</a
-              >
-            </li>
-            <li>
-              <a
-                href="article_detail.html?id=76.html"
-                target="_blank"
-                title="终于等到你！千助新版Logo正式启用"
-                >终于等到你！千助新版Logo正式启用</a
-              >
-            </li>
-            <li>
-              <a
-                href="article_detail.html?id=75.html"
-                target="_blank"
-                title="值得参考！功能型网站建设架构的全方位规划"
-                >值得参考！功能型网站建设架构的全方位 ...</a
-              >
-            </li>
-            <li>
-              <a
-                href="article_detail.html?id=74.html"
-                target="_blank"
-                title="苹果一手缔造的行业“移动互联网”营收或超其自身市值"
-                >苹果一手缔造的行业“移动互联网”营收 ...</a
-              >
-            </li>
-            <li>
-              <a
-                href="article_detail.html?id=73.html"
-                target="_blank"
-                title="留白设计是一种高端艺术，要懂得在网页设计中运用负空间"
-                >留白设计是一种高端艺术，要懂得在网页 ...</a
-              >
-            </li>
+            <template v-for="item in newsList">
+              <li>
+                <a :href="item.href" target="_blank" :title="item.title">{{item.text}} ...</a>
+              </li>
+            </template>
           </ul>
         </div>
         <div class="guide"></div>
@@ -480,7 +449,20 @@
         speciality:['年专注，物联网云计算','涉足始于2010年 - 2019年 展望未来','工业控制、设备采集、无线通信、云计算、数据大脑、3D可视化'],
         cutting_edge: ['掌握前沿技术', 'BAT互联网背景 + AWS + AZURE', '技术一脉相承，国际领先，紧随云时代最前沿'],
         experienced: ['行业经验丰富','智慧建筑、智能工厂、环境监测、机房监控','IBMS | MES | CPS | SCADA | IoT PaaS'],
-        costEfficient:['生态模式，合作共赢','项目交付 | 产品实施 | 云服务、云托管 | 数据增值','寻求运营合伙人、代理商、战略合作']
+        costEfficient:['生态模式，合作共赢','项目交付（私有部署 | 云托管）','产品实施（私有部署 | 云服务）','寻求运营合伙人、代理商、战略合作！'],
+        newsList: [{
+          href:'http://www.baidu.com',
+          title: '限时赠送采集硬件，DIY自己的物联网远程！免费使用，押金可退！',
+          text: '赠送采集硬件，押金可退，自己做远程监测'
+        },{
+          href: 'http://www.baidu.com',
+          title: '新推广“智慧农业方案”，现全国征集10位客户，限定“智慧农业”领域，免费实施！',
+          text: '新推“智慧农业方案”，免费实施，赶快报名'
+        }, {
+          href: 'http://www.baidu.com',
+          title: '数据存储空间免费赠送5G，赶快领取！',
+          text: '数据存储空间免费赠送5G，赶快领取'
+        }]
       };
     },
     methods: {
