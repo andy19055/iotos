@@ -78,10 +78,12 @@
           </div>
           <div class="swiper-slide nth4">
             <div class="box">
-              <div class="top"><span>先入为主，布局未来</span> <i></i></div>
+              <div class="top"><span>{{costEfficient[0]}}</span> <i></i></div>
               <div class="bottom">
-                全面布局 <u>PC</u>端与 <u>移动</u>端 <br />抢占头等商机
-                <br />基于 <u>Html5</u>响应式布局，智能识别多种终端设备
+                <br />
+                {{costEfficient[1]}}
+                <br /><br />
+                {{costEfficient[2]}}
               </div>
             </div>
           </div>
@@ -477,7 +479,8 @@
         entering: "欢迎访问，即将跳转...",
         speciality:['年专注，物联网云计算','涉足始于2010年 - 2019年 展望未来','工业控制、设备采集、无线通信、云计算、数据大脑、3D可视化'],
         cutting_edge: ['掌握前沿技术', 'BAT互联网背景 + AWS + AZURE', '技术一脉相承，国际领先，紧随云时代最前沿'],
-        experienced: ['行业经验丰富','智慧建筑、智能工厂、环境监测、机房监控','']
+        experienced: ['行业经验丰富','智慧建筑、智能工厂、环境监测、机房监控','IBMS | MES | CPS | SCADA | IoT PaaS'],
+        costEfficient:['生态模式，合作共赢','项目交付 | 产品实施 | 云服务、云托管 | 数据增值','寻求运营合伙人、代理商、战略合作']
       };
     },
     methods: {
