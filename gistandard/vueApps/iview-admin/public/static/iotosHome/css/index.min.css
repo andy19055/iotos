@@ -2438,12 +2438,14 @@ section.contact {
 }
 @media (max-width: 1280px) and (max-height: 800px) {
   .video .swiper-container .nth2 {
-    background: url(../images/wp1_2_h800.jpg) 50% 20%;
+    background: url(../images/wp1_2_h800.jpg) no-repeat 50%;
+    background-size:cover;
   }
 }
 @media (max-width: 960px) and (max-height: 600px) {
   .video .swiper-container .nth2 {
-    background: url(../images/wp1_2_h600.jpg) 50% 20%;
+    background: url(../images/wp1_2_h600.jpg) no-repeat 50%;
+    background-size:cover;
   }
 }
 @media (max-width: 799px) {
