@@ -72,7 +72,8 @@
               <div class="mid"></div>
               <div class="bottom">
                 <br/>{{experienced[1]}}
-                <br /><br/>{{experienced[2]}}
+                <br /><br/>
+                <div v-html="experienced[2]"></div>
               </div>
             </div>
           </div>
@@ -81,12 +82,12 @@
               <div class="top"><span>{{costEfficient[0]}}</span> <i></i></div>
               <div class="bottom">
                 <br />
-                {{costEfficient[1]}}
-                <br /><br />
-                {{costEfficient[2]}}
-                <br /><br />
+                <div v-html="costEfficient[1]"></div>
+                <br />
+                <div v-html="costEfficient[2]"></div>
+                <br />
                 {{costEfficient[3]}}
-                <br /><br />
+                <br /><br/>
                 {{costEfficient[4]}}
               </div>
             </div>
@@ -448,12 +449,12 @@
         entering: "欢迎访问，即将跳转...",
         speciality:['年专注，物联网云计算','涉足始于2010年 - 2019年 展望未来','工业控制、设备采集、无线通信、云计算、数据大脑、3D可视化'],
         cutting_edge: ['掌握前沿技术', 'BAT互联网背景 + AWS + AZURE', '技术一脉相承，国际领先，紧随云时代最前沿'],
-        experienced: ['行业经验丰富','智慧建筑、智能工厂、环境监测、机房监控','IBMS | MES | CPS | SCADA | IoT PaaS'],
-        costEfficient:['生态模式，合作共赢','项目交付（私有部署 | 云托管）','产品实施（私有部署 | 云服务）','寻求运营合伙人、代理商、战略合作！'],
+        experienced: ['行业经验丰富','智慧建筑、智能工厂、环境监测、机房监控','<div>IBMS <span style="font-size:14pt;color:#00DFB9">☑</span>  MES <span style="font-size:14pt;color:#00DFB9">☑</span>  CPS <span style="font-size:14pt;color:#00DFB9">☑</span>  SCADA <span style="font-size:14pt;color:#00DFB9">☑</span>  IoT PaaS <span style="font-size:14pt;color:#00DFB9">☑</span></div>'],
+        costEfficient:['生态合作，共赢模式','<div>项目交付（私有部署 <span style="font-size:14pt;color:#00DFB9;">☑</span>  云托管 <span style="font-size:14pt;color:#00DFB9">☑</span>）</div>','<div>产品实施（私有部署 <span style="font-size:14pt;color:#00DFB9">☑</span>  云服务 <span style="font-size:14pt;color:#00DFB9">☑</span>）</div>', '服务至上，合作共赢','寻求运营合伙人、渠道代理商、战略伙伴！'],
         newsList: [{
           href:'http://www.baidu.com',
-          title: '限时赠送采集硬件，DIY自己的物联网远程！免费使用，押金可退！',
-          text: '赠送采集硬件，押金可退，自己做远程监测'
+          title: '限时免费赠送采集硬件，DIY自己的物联网远程！免费使用，押金可退！',
+          text: '免费赠送硬件，押金可退，自己做远程'
         },{
           href: 'http://www.baidu.com',
           title: '新推广“智慧农业方案”，现全国征集10位客户，限定“智慧农业”领域，免费实施！',
