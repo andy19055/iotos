@@ -6,9 +6,16 @@
   position: relative;
   width: 256px;
 }
+
 .circle {
   margin: 100px auto 0 auto;
+
+  z-index: 99;
+  right: 25px; /*FF IE7*/
+  top: -25px; /*FF IE7*/
+  position: fixed !important; /*FF IE7*/
 }
+
 .ring {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
