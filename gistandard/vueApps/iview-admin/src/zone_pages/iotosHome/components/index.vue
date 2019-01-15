@@ -1,5 +1,11 @@
 <template>
   <div class="root">
+    <!-- <MenuDialog :openMenu="openMenu"></MenuDialog>
+    <Modal title="Title" v-model="openMenu" :closable="false">
+      <p>Content of dialog</p>
+      <p>Content of dialog</p>
+      <p>Content of dialog</p>
+    </Modal> -->
     <header>
       <div class="logo">
         <a href="index.html"
@@ -223,6 +229,43 @@
         </ul>
       </div>
     </section>
+    <section class="marketing">
+      <div class="box">
+        <div class="caption">
+          <i></i> <span>整合营销，抢占商机</span> <br class="clear" />
+        </div>
+        <ul class="items list-inline">
+          <li class="se">
+            <i></i><strong>搜索引擎</strong>
+            <p>SEO 优化<br />搜索引擎竞价</p>
+          </li>
+          <li class="weixin">
+            <i></i><strong>微信营销</strong>
+            <p>公众账号 / 微网站<br />微盟 ( 微社区 )</p>
+          </li>
+          <li class="weibo">
+            <i></i><strong>微博营销</strong>
+            <p>企业蓝V认证<br />官方微博接入网站</p>
+          </li>
+          <li class="sms">
+            <i></i><strong>消息推送</strong>
+            <p>短信平台接口<br />Email 推送</p>
+          </li>
+          <li class="pay">
+            <i></i><strong>在线支付</strong>
+            <p>支付宝、银联<br />Paypal 接口</p>
+          </li>
+          <li class="bbs">
+            <i></i><strong>论坛聚人</strong>
+            <p>独立开发<br />会员打通</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="saas">
+      <div class="box">
+      </div>
+    </section>
     <section class="quality">
       <div class="box">
         <div class="caption">
@@ -269,42 +312,7 @@
             </div>
           </div>
         </div>
-        <a href="case.html" class="lookall" target="_blank"
-          >你以为看到了网站的全部？</a
-        >
-      </div>
-    </section>
-    <section class="marketing">
-      <div class="box">
-        <div class="caption">
-          <i></i> <span>整合营销，抢占商机</span> <br class="clear" />
-        </div>
-        <ul class="items list-inline">
-          <li class="se">
-            <i></i><strong>搜索引擎</strong>
-            <p>SEO 优化<br />搜索引擎竞价</p>
-          </li>
-          <li class="weixin">
-            <i></i><strong>微信营销</strong>
-            <p>公众账号 / 微网站<br />微盟 ( 微社区 )</p>
-          </li>
-          <li class="weibo">
-            <i></i><strong>微博营销</strong>
-            <p>企业蓝V认证<br />官方微博接入网站</p>
-          </li>
-          <li class="sms">
-            <i></i><strong>消息推送</strong>
-            <p>短信平台接口<br />Email 推送</p>
-          </li>
-          <li class="pay">
-            <i></i><strong>在线支付</strong>
-            <p>支付宝、银联<br />Paypal 接口</p>
-          </li>
-          <li class="bbs">
-            <i></i><strong>论坛聚人</strong>
-            <p>独立开发<br />会员打通</p>
-          </li>
-        </ul>
+        <a href="case.html" class="lookall" target="_blank">你以为看到了网站的全部？</a>
       </div>
     </section>
     <section class="aboutus">
@@ -361,23 +369,15 @@
       <div class="box">
         <div class="above">
           <div class="wechat">
-            <img
-              src="../../../../public/static/iotosHome/images/wechat_code.jpg"
-              alt="扫描关注千助微信公众账号"
-            />
+            <img src="../../../../public/static/iotosHome/images/wechat_code.jpg" alt="扫描关注千助微信公众账号" />
           </div>
           <div class="left">
             <a href="tel:4006123011" title="网站制作咨询热线" class="tel"></a>
             <p>
               中国<u>&middot;</u>北京<u></u>中关村科技园<br />联系电话：{{
-                hotline
-              }}<u>/</u
-              >58851650<br />地址：海淀区上地东路盈创动力E座905<br />邮编：100085<a
-                href="/job/saleman.html"
-                target="_blank"
-                class="job"
-                >[ 工作机会 ]</a
-              >
+              hotline
+              }}<u>/</u>58851650<br />地址：海淀区上地东路盈创动力E座905<br />邮编：100085<a href="/job/saleman.html" target="_blank" class="job">[
+                工作机会 ]</a>
             </p>
           </div>
           <div class="right">
@@ -388,6 +388,15 @@
         </div>
       </div>
       y
+    </section>
+    <section class="special">
+      <div class="box">
+        <ul class="menu">
+          <li>思想</li>
+          <li>关于</li>
+          <li>荣誉</li>
+        </ul>
+      </div>
     </section>
     <div class="dock">
       <ul class="icons">
@@ -427,24 +436,28 @@
 <script>
   import "@/assets/icons/iconfont.css";
   import Icons from "_c/icons";
+  import MenuDialog from "../components/menu_dialog.vue";
 
   export default {
     name: "Index",
     components: {
-      Icons
+      Icons,
+      MenuDialog
     },
     data() {
       return {
         menuList: [
           "首页",
-          "活动",
           "优势",
           "案例",
           "合作",
-          "联系",
+          "活动",
+          "服务",
           "下载",
-          "登录"
+          "关于",
+          "联系"
         ],
+        openMenu: true,
         hotline: "400-1188-502",
         entering: "欢迎访问，即将跳转...",
         speciality:['年专注，物联网云计算','涉足始于2010年 - 2019年 展望未来','工业控制、设备采集、无线通信、云计算、数据大脑、3D可视化'],

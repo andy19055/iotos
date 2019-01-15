@@ -54,7 +54,7 @@ module.exports = {
       entry: "src/zone_pages/iotosHome/main.js",
       template: "public/iotosHome.html",
       filename: "index.html",
-      title: "爱投斯官网"
+      title: "爱投斯物联网 官网"
     },
     dataVusual: {
       entry: "src/zone_pages/dataVusual/main.js",

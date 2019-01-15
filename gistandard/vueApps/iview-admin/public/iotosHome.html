@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>爱投斯智能 官网</title>
+    <title>爱投斯物联网</title>
     <meta
       name="keywords"
       content="大气,炫酷,响应式,网络科技,企业,公司官网,网站模板,源码,整站下载"
@@ -16,6 +16,17 @@
       content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
     />
 
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="./static/common/activity/css/font-awesome.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="./static/common/activity/css/style.css"
+    />
+
     <link href="./static/iotosHome/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./static/iotosHome/css/index.min.css" rel="stylesheet" />
     <script src="./static/iotosHome/js/jquery.min.js"></script>
@@ -24,6 +35,42 @@
   </head>
   <body>
     <div id="app"></div>
+    <div class="circle" style="position: absolute;z-index: 9999">
+      <div class="ring">
+        <a href="javascript:void(0)" class="menuItem fa fa-home fa-2x"></a>
+        <a href="javascript:void(0)" class="menuItem fa fa-comment fa-2x"></a>
+        <a href="javascript:void(0)" class="menuItem fa fa-play fa-2x"></a>
+        <a href="javascript:void(0)" class="menuItem fa fa-camera fa-2x"></a>
+        <a href="javascript:void(0)" class="menuItem fa fa-music fa-2x"></a>
+        <a href="javascript:void(0)" class="menuItem fa fa-user fa-2x"></a>
+        <a href="javascript:void(0)" class="menuItem fa fa-trash-o fa-2x"></a>
+        <a href="javascript:void(0)" class="menuItem fa fa-star fa-2x"></a>
+      </div>
+      <a href="javascript:void(0)" class="center fa fa-th fa-2x"></a>
+    </div>
     <!-- built files will be auto injected -->
+
+    <script>
+      $(function() {
+        var items = document.querySelectorAll(".menuItem");
+        for (var i = 0, l = items.length; i < l; i++) {
+          items[i].style.left =
+            (
+              50 -
+              35 * Math.cos(-0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)
+            ).toFixed(4) + "%";
+
+          items[i].style.top =
+            (
+              50 +
+              35 * Math.sin(-0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)
+            ).toFixed(4) + "%";
+        }
+        document.querySelector(".center").onclick = function(e) {
+          e.preventDefault();
+          document.querySelector(".circle").classList.toggle("open");
+        };
+      });
+    </script>
   </body>
 </html>
