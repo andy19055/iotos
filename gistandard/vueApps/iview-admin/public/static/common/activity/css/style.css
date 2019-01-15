@@ -9,6 +9,8 @@
 
 .circle {
   margin: 100px auto 0 auto;
+  font-size: 6pt !important;
+  font-weight: bold !important;
 
   z-index: 99;
   right: 25px; /*FF IE7*/

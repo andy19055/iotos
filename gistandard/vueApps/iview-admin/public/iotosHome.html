@@ -37,20 +37,69 @@
     <div id="app"></div>
     <div class="circle">
       <div class="ring">
-        <a href="javascript:void(0)" class="menuItem fa fa-home fa-2x"></a>
-        <a href="javascript:void(0)" class="menuItem fa fa-comment fa-2x"></a>
-        <a href="javascript:void(0)" class="menuItem fa fa-play fa-2x"></a>
-        <a href="javascript:void(0)" class="menuItem fa fa-camera fa-2x"></a>
-        <a href="javascript:void(0)" class="menuItem fa fa-music fa-2x"></a>
-        <a href="javascript:void(0)" class="menuItem fa fa-user fa-2x"></a>
-        <a href="javascript:void(0)" class="menuItem fa fa-trash-o fa-2x"></a>
-        <a href="javascript:void(0)" class="menuItem fa fa-star fa-2x"></a>
+        <a
+          href="javascript:void(0)"
+          onclick="changePage(1)"
+          class="menuItem fa fa-2x"
+          >优势</a
+        >
+        <a
+          href="javascript:void(0)"
+          onclick="changePage(2)"
+          class="menuItem fa fa-2x"
+          >案例</a
+        >
+        <a
+          href="javascript:void(0)"
+          onclick="changePage(3)"
+          class="menuItem fa fa-2x"
+          >合作</a
+        >
+        <a
+          href="javascript:void(0)"
+          onclick="changePage(4)"
+          class="menuItem fa fa-2x"
+          >活动</a
+        >
+        <a
+          href="javascript:void(0)"
+          onclick="changePage(5)"
+          class="menuItem fa fa-2x"
+          >服务</a
+        >
+        <a
+          href="javascript:void(0)"
+          onclick="changePage(6)"
+          class="menuItem fa fa-2x"
+          >下载</a
+        >
+        <a
+          href="javascript:void(0)"
+          onclick="changePage(7)"
+          class="menuItem fa fa-2x"
+          >关于</a
+        >
+        <a
+          href="javascript:void(0)"
+          onclick="changePage(8)"
+          class="menuItem fa fa-2x"
+          >联系</a
+        >
       </div>
-      <a href="javascript:void(0)" class="center fa fa-th fa-2x hidden"></a>
+      <a
+        href="javascript:void(0)"
+        onclick="changePage(0)"
+        class="center fa fa-2x hidden"
+        >首页</a
+      >
     </div>
     <!-- built files will be auto injected -->
 
     <script>
+      function changePage(index) {
+        $("header .menu li")[index].click();
+        $("#app > div > header > div.menu-icon > span").click();
+      }
       $(function() {
         var items = document.querySelectorAll(".menuItem");
         for (var i = 0, l = items.length; i < l; i++) {

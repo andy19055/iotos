@@ -122,7 +122,7 @@
         <a class="movedown"></a>
       </div>
     </section>
-    <section class="business">
+    <section class="business" id="business">
       <div class="box">
         <div class="caption">
           <i></i> <span>我们能做什么</span> <br class="clear" />
@@ -151,7 +151,7 @@
         </ul>
       </div>
     </section>
-    <section class="cases">
+    <section class="cases" id="cases">
       <div class="box">
         <div class="caption">
           <i></i> <span>案例欣赏</span> <br class="clear" />
@@ -205,7 +205,7 @@
         >
       </div>
     </section>
-    <section class="clients">
+    <section class="clients" id="clients">
       <div class="box">
         <div class="caption">
           <i></i> <span>他们与千助长期合作</span> <br class="clear" />
@@ -229,7 +229,7 @@
         </ul>
       </div>
     </section>
-    <section class="marketing">
+    <section class="marketing" id="marketing">
       <div class="box">
         <div class="caption">
           <i></i> <span>整合营销，抢占商机</span> <br class="clear" />
@@ -262,11 +262,11 @@
         </ul>
       </div>
     </section>
-    <section class="saas">
+    <section class="saas" id="saas">
       <div class="box">
       </div>
     </section>
-    <section class="quality">
+    <section class="quality" id="quality">
       <div class="box">
         <div class="caption">
           <i></i> <span>不同媒介，同样精彩</span> <br class="clear" />
@@ -315,8 +315,8 @@
         <a href="case.html" class="lookall" target="_blank">你以为看到了网站的全部？</a>
       </div>
     </section>
-    <section class="aboutus">
-      <ul class="menu">
+    <section class="aboutus" id="aboutus">
+      <ul class="menu"> 
         <li>思想</li>
         <li>关于</li>
         <li>荣誉</li>
@@ -365,7 +365,7 @@
         </tbody>
       </table>
     </section>
-    <section class="contact">
+    <section class="contact" id="contact">
       <div class="box">
         <div class="above">
           <div class="wechat">
