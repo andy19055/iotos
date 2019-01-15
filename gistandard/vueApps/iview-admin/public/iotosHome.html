@@ -46,7 +46,7 @@
         <a href="javascript:void(0)" class="menuItem fa fa-trash-o fa-2x"></a>
         <a href="javascript:void(0)" class="menuItem fa fa-star fa-2x"></a>
       </div>
-      <a href="javascript:void(0)" class="center fa fa-th fa-2x"></a>
+      <a href="javascript:void(0)" class="center fa fa-th fa-2x hidden"></a>
     </div>
     <!-- built files will be auto injected -->
 
@@ -66,10 +66,10 @@
               35 * Math.sin(-0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)
             ).toFixed(4) + "%";
         }
-        document.querySelector(".center").onclick = function(e) {
-          e.preventDefault();
-          document.querySelector(".circle").classList.toggle("open");
-        };
+        // document.querySelector(".center").onclick = function(e) {
+        //   e.preventDefault();
+        //   document.querySelector(".circle").classList.toggle("open");
+        // };
       });
     </script>
   </body>
