@@ -3,28 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>爱投斯物联网</title>
-    <meta
-      name="keywords"
-      content="大气,炫酷,响应式,网络科技,企业,公司官网,网站模板,源码,整站下载"
-    />
-    <meta
-      name="description"
-      content="大气炫酷响应式网络科技企业公司官网网站模板源码整站下载，下载文件为全站完整版，页面可直接拿来用！"
-    />
+    <meta name="keywords" content="物联网 IOTOS 解决方案 物联平台 IOT" />
+    <meta name="description" content="爱投斯智能技术（深圳）有限公司 官网" />
     <meta
       name="viewport"
       content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
-    />
-
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="./static/common/activity/css/font-awesome.css"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="./static/common/activity/css/style.css"
     />
 
     <link href="./static/iotosHome/css/bootstrap.min.css" rel="stylesheet" />
@@ -35,91 +18,6 @@
   </head>
   <body>
     <div id="app"></div>
-    <div class="circle">
-      <div class="ring">
-        <a
-          href="javascript:void(0)"
-          onclick="changePage(1)"
-          class="menuItem fa fa-2x"
-          >优势</a
-        >
-        <a
-          href="javascript:void(0)"
-          onclick="changePage(2)"
-          class="menuItem fa fa-2x"
-          >案例</a
-        >
-        <a
-          href="javascript:void(0)"
-          onclick="changePage(3)"
-          class="menuItem fa fa-2x"
-          >合作</a
-        >
-        <a
-          href="javascript:void(0)"
-          onclick="changePage(4)"
-          class="menuItem fa fa-2x"
-          >活动</a
-        >
-        <a
-          href="javascript:void(0)"
-          onclick="changePage(5)"
-          class="menuItem fa fa-2x"
-          >服务</a
-        >
-        <a
-          href="javascript:void(0)"
-          onclick="changePage(6)"
-          class="menuItem fa fa-2x"
-          >下载</a
-        >
-        <a
-          href="javascript:void(0)"
-          onclick="changePage(7)"
-          class="menuItem fa fa-2x"
-          >关于</a
-        >
-        <a
-          href="javascript:void(0)"
-          onclick="changePage(8)"
-          class="menuItem fa fa-2x"
-          >联系</a
-        >
-      </div>
-      <a
-        href="javascript:void(0)"
-        onclick="changePage(0)"
-        class="center fa fa-2x hidden"
-        >首页</a
-      >
-    </div>
     <!-- built files will be auto injected -->
-
-    <script>
-      function changePage(index) {
-        $("header .menu li")[index].click();
-        $("#app > div > header > div.menu-icon > span").click();
-      }
-      $(function() {
-        var items = document.querySelectorAll(".menuItem");
-        for (var i = 0, l = items.length; i < l; i++) {
-          items[i].style.left =
-            (
-              50 -
-              35 * Math.cos(-0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)
-            ).toFixed(4) + "%";
-
-          items[i].style.top =
-            (
-              50 +
-              35 * Math.sin(-0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)
-            ).toFixed(4) + "%";
-        }
-        // document.querySelector(".center").onclick = function(e) {
-        //   e.preventDefault();
-        //   document.querySelector(".circle").classList.toggle("open");
-        // };
-      });
-    </script>
   </body>
 </html>
