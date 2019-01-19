@@ -15,7 +15,10 @@
       </Input>
     </FormItem>
     <FormItem>
-      <Button @click="handleSubmit" type="primary" long>登录</Button>
+      <Button @click="handleSubmit" type="primary" long :loading="loading">
+            <span v-if="!loading">登录</span>
+            <span v-else>登录中...</span>
+      </Button>
     </FormItem>
   </Form>
 </template>
@@ -37,6 +40,12 @@ export default {
         return [
           { required: true, message: '密码不能为空', trigger: 'blur' }
         ]
+      }
+    },
+    loading:{
+      type: Boolean,
+      default: () => {
+        return false
       }
     }
   },

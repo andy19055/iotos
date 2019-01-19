@@ -47,32 +47,32 @@ module.exports = {
   // }
 
   // 设为false打包时不生成.map文件
-  productionSourceMap: false,
+  productionSourceMap: false
 
-  pages: {
-    iotosHome: {
-      entry: "src/zone_pages/iotosHome/main.js",
-      template: "public/iotosHome.html",
-      filename: "index.html",
-      title: "爱投斯物联网 官网"
-    },
-    dataVusual: {
-      entry: "src/zone_pages/dataVusual/main.js",
-      template: "public/dataVusual.html",
-      filename: "dataVisual.html",
-      title: "dataVusual"
-    },
-    page1: {
-      entry: "src/zone_pages/page1/main.js",
-      template: "public/page1.html",
-      filename: "page1.html",
-      title: "page1"
-    },
-    page2: {
-      entry: "src/zone_pages/page2/main.js",
-      template: "public/page2.html",
-      filename: "page2.html",
-      title: "page2"
-    }
-  }
+  // pages: {
+  //   iotosHome: {
+  //     entry: "src/zone_pages/iotosHome/main.js",
+  //     template: "public/iotosHome.html",
+  //     filename: "index.html",
+  //     title: "爱投斯物联网 官网"
+  //   },
+  //   dataVusual: {
+  //     entry: "src/zone_pages/dataVusual/main.js",
+  //     template: "public/dataVusual.html",
+  //     filename: "dataVisual.html",
+  //     title: "dataVusual"
+  //   },
+  //   page1: {
+  //     entry: "src/zone_pages/page1/main.js",
+  //     template: "public/page1.html",
+  //     filename: "page1.html",
+  //     title: "page1"
+  //   },
+  //   page2: {
+  //     entry: "src/zone_pages/page2/main.js",
+  //     template: "public/page2.html",
+  //     filename: "page2.html",
+  //     title: "page2"
+  //   }
+  // }
 };

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+
+    <!-- 页面基本设置禁止随意更改 -->
+    <meta charset="utf-8" />
+    <meta name="author" content="forework" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <!-- 页面基本设置禁止随意更改 -->
+    <!-- 基础CSS类库可随意更改 -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../public/static/index/css/less.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../public/static/index/css/basic.css"
+    />
+    <!--[if IE 8]>
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="../../../public/static/index/css/ie8.css"
+      />
+    <![endif]-->
+    <!--[if gte IE 9]>
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="../../../public/static/index/css/ie.css"
+      />
+    <![endif]-->
+
+    <!--&lt;!&ndash; Bootstrap 3.3.6 &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}" />
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{% static 'dist/css/myself.css' %}" />
+  </head>
+  <body>
+    <div class="wrapper" style="background-color: white;">
+      <div class="login-top">
+        <div style="height: 60px;background-color: white;">
+          <div style="margin-left: 160px;">
+            <img style="width: 350px"
+            src="../../../public/static/index/img/log_1.jpg"/ >
+          </div>
+          <div
+            style="float:right;margin-top: -34px;width: 360px;font-size: 12px;"
+          >
+            <span>登录帮助</span> <span>|</span> <span>在线答疑</span>
+            <span>|</span> <span>关于</span>
+          </div>
+        </div>
+
+        <!--{% if system_setup.loginTitle %}{{ system_setup.loginTitle }}{% else %}爱投斯协同办公平台{% endif %}-->
+        <div class="login-topBg">
+          <div class="login-topBg1">
+            <div class="login-topStyle">
+              <!--在点击注册时出现样式login-topStyle3登录框，而login-topStyle2则消失-->
+              <div
+                class="login-topStyle3"
+                id="loginStyle1"
+                style="margin-top: 75px;"
+              >
+                <form action="" method="post">
+                  <h3>用户平台登录</h3>
+                  <div
+                    class="ui-form-item loginUsername form-group has-feedback {% if login_form.errors.username %}has-error{% endif %}"
+                  >
+                    <input
+                      type="username"
+                      name="username"
+                      class="form-control"
+                      placeholder="用户名/手机号/密码"
+                      value="{{ login_form.username.value }}"
+                    />
+                    <!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
+                  </div>
+                  <div
+                    class="ui-form-item loginPassword form-group has-feedback {% if login_form.errors.password %}has-error{% endif %}"
+                  >
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      placeholder="请输入密码"
+                      value="{{ login_form.password.value }}"
+                    />
+                    <!--<span class="glyphicon glyphicon-lock form-control-feedback"></span>-->
+                  </div>
+                  <div class="login_reme">
+                    <input type="checkbox" /> <a class="reme1">记住账号</a>
+                    <a class="reme2" href="#">忘记密码?</a>
+                  </div>
+                  <a class="btnStyle btn-register"
+                    ><button
+                      type="submit"
+                      style="width: 100%;height: 100%;background: transparent;border: none;color: white;font-weight: bold"
+                    >
+                      立即登录
+                    </button></a
+                  >
+                  {% csrf_token %} {% if msg %}
+                  <!--判断如果后端返回用户验证错误信息,前端页面输出错误信息-->
+                  <p class="text-red">{{ msg }}</p>
+                  {% endif %}
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loginCen" style="margin-top: 55px;">
+        <div class="login-center">
+          <div class="loginCenter-moudle">
+            <div class="loginCenter-moudleLeft" style="margin-right: 60px;">
+              &nbsp;
+            </div>
+            <div class="loginCenter-moudleRight" style="  width: 1067px;">
+              <!--第一个-->
+              <a
+                class="loginCenter-mStyle loginCenter-moudle1"
+                id="moudleRemove"
+                style=" display:block;width: 340px;"
+              >
+                <span class="moudle-img"
+                  ><img src="../../../public/static/index/img/login_bg_01.png"
+                /></span>
+                <span class="moudle-text">
+                  <span class="moudle-text1" style="font-family:'微软雅黑'"
+                    >一体化集成管理</span
+                  >
+                  <span class="moudle-text2" style="font-family:'微软雅黑'"
+                    >Integrated management</span
+                  >
+                </span>
+              </a>
+              <!--第二个-->
+              <a
+                class="loginCenter-mStyle loginCenter-moudle2"
+                style=" display:block; width: 357px;"
+                id="moudleRemove2"
+              >
+                <span class="moudle-img"
+                  ><img src="../../../public/static/index/img/login_bg_02.png"
+                /></span>
+                <span class="moudle-text">
+                  <span class="moudle-text1" style="font-family:'微软雅黑'">
+                    精细化物业办公</span
+                  >
+                  <span class="moudle-text2" style="font-family:'微软雅黑'"
+                    >Fine property office</span
+                  >
+                </span>
+              </a>
+              <!--第三个-->
+              <a
+                class="loginCenter-mStyle loginCenter-moudle3"
+                style=" display:block;"
+                id="moudleRemove3"
+              >
+                <span class="moudle-img"
+                  ><img src="../../../public/static/index/img/login_bg_03.png"
+                /></span>
+                <span class="moudle-text">
+                  <span class="moudle-text">
+                    <span class="moudle-text1" style="font-family:'微软雅黑'"
+                      >独立化场景应用</span
+                    >
+                    <span class="moudle-text2" style="font-family:'微软雅黑'"
+                      >Independent scene application</span
+                    >
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="footerText"
+          >Copyright © 2019-2020 爱投斯智能技术（深圳）有限公司
+          粤ICP备：18072544号</span
+        >
+      </div>
+    </div>
+
+    <!-- jQuery 2.2.3 -->
+    <script src="{% static 'plugins/jQuery/jquery-2.2.3.min.js' %}"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- iCheck -->
+  </body>
+</html>
