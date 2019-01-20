@@ -9,40 +9,31 @@
   const datasource = [
     {
       name: "2019-001",
-      begin: "2019/01/01 12:13:14",
-      end: "2019/01/01 12:13:14",
+      identify: '4202221991231003X',
+      date: "2019/01/01 12:13:14",
+      status: "已缴纳",
       amount: 58,
-      receipt: 58,
-      balance: 0,
-      payedtime: "2019/01/01 12:13:14"
     },
     {
-      name: "2019-002",
-      status: "意向签订",
-      begin: "2019/01/01 12:13:14",
-      end: "2019/01/01 12:13:14",
-      amount: 10,
-      receipt: 0,
-      balance: 0,
-      payedtime: "2019/01/01 12:13:14"
+      name: "2019-001",
+      identify: '4202221991231003X',
+      date: "2019/01/01 12:13:14",
+      status: "已缴纳",
+      amount: 58,
     },
     {
-      name: "2019-003",
-      begin: "2019/01/01 12:13:14",
-      end: "2019/01/01 12:13:14",
-      amount: 23,
-      receipt: 23,
-      balance: 0,
-      payedtime: "2019/01/01 12:13:14"
+      name: "2019-001",
+      identify: '4202221991231003X',
+      date: "2019/01/01 12:13:14",
+      status: "已缴纳",
+      amount: 58,
     },
     {
-      name: "2019-004",
-      begin: "2019/01/01 12:13:14",
-      end: "2019/01/01 12:13:14",
-      amount: 46,
-      receipt: 0,
-      balance: 0,
-      payedtime: "2019/01/01 12:13:14"
+      name: "2019-001",
+      identify: '4202221991231003X',
+      date: "2019/01/01 12:13:14",
+      status: "已缴纳",
+      amount: 58,
     }
   ];
 
@@ -55,7 +46,7 @@
       return {
         columns: [
           {
-            title: "一卡通卡号",
+            title: "姓名",
             slot: "name",
             sortable: true,
             filter: {
@@ -63,56 +54,48 @@
             }
           },
           {
-            title: "进停车场时间",
-            slot: "begin",
+            title: "证件号码",
+            slot: "identify",
             filter: {
-              type: "DatePicker",
-              option: {
-                type: "datetime",
-                format: "yyyy/MM/dd HH:mm:ss"
-              }
+              type: "Input"
             }
           },
           {
-            title: "出停车场时间",
-            slot: "end",
-            filter: {
-              type: "DatePicker",
-              option: {
-                type: "datetime",
-                format: "yyyy/MM/dd HH:mm:ss"
-              }
-            }
-          },
-          {
-            title: "应收金额",
+            title: "押金数额",
             slot: "amount",
             filter: {
               type: "InputNumber"
             }
           },
           {
-            title: "实收金额",
-            slot: "receipt",
-            filter: {
-              type: "InputNumber"
-            }
-          },
-          {
-            title: "卡内余额",
-            slot: "balance",
-            filter: {
-              type: "InputNumber"
-            }
-          },
-          {
-            title: "缴费时间",
-            slot: "payedtime",
+            title: "缴纳日期",
+            slot: "date",
             filter: {
               type: "DatePicker",
               option: {
                 type: "datetime",
                 format: "yyyy/MM/dd HH:mm:ss"
+              }
+            }
+          },
+          {
+            title: "押金状态",
+            slot: "status",
+            filter: {
+              type: "Select",
+              option: {
+                0: {
+                  value: "",
+                  name: "全部"
+                },
+                1: {
+                  value: "已缴纳",
+                  name: "已缴纳"
+                },
+                2: {
+                  value: "已退还",
+                  name: "已退还"
+                }
               }
             }
           }
